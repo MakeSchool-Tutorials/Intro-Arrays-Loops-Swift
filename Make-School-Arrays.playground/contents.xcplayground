@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='5.0' target-platform='ios'>
-    <timeline fileName='timeline.xctimeline'/>
+<playground version='6.0' target-platform='ios' display-mode='raw'>
+    <pages>
+        <page name='P01-Introduction'/>
+        <page name='P02-Initialization'/>
+        <page name='P03-Counting Neighbors'/>
+        <page name='P04-Update Loop'/>
+    </pages>
 </playground>
