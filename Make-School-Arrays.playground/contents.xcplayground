@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='raw'>
+<playground version='6.0' target-platform='ios' display-mode='rendered'>
     <pages>
         <page name='P01-Introduction'/>
         <page name='P02-Initialization'/>
-        <page name='P03-Counting Neighbors'/>
-        <page name='P04-Update Loop'/>
+        <page name='P03-Optionals'/>
+        <page name='P04-2D Arrays'/>
+        <page name='P05-Counting Neighbors'/>
+        <page name='P06-Update Loop'/>
     </pages>
 </playground>
