@@ -6,11 +6,11 @@ We're almost there! Now it's time to write the update loop for Game Of Life, so 
 
 - Count how many alive neighbors the cell has (diagonals included).
 - If the cell is alive:
-- If the cell has _less than_ 2 neighbors, it dies of underpopulation.
-- If the cell has 2 or 3 neighbors, it stays alive.
-- If the cell has more than 3 neighbors, it dies of overpopulation.
+    - If the cell has _less than_ 2 neighbors, it dies of underpopulation.
+    - If the cell has 2 or 3 neighbors, it stays alive.
+    - If the cell has more than 3 neighbors, it dies of overpopulation.
 - If the cell is dead:
-- If the dead cell has _exactly_ 3 neighbors, it becomes a live cell, via reproduction!
+    - If the dead cell has _exactly_ 3 neighbors, it becomes a live cell, via reproduction!
 
 Since we've already written the code that counts the neighbors of each cell, we can use our accumulated knowledge to iterate through each cell in the grid, and update the value accordingly!
 */
@@ -22,7 +22,7 @@ We'll use this Character "■" in order to denote alive cells. This is stored in
     let liveChar: Character = "■"
   
 /*:
-This is the `update` function that will get called on each step of the simulation. Here, you're responsible for accessing `map`, and updating its values. Iterate through each row and column using bounds map.count and map[0].count, and get the neighbor count for each, using `countNeighbors(map, x, y)`. Use `if` statements to check if cells are equal to `nil` and to compare neighbor values, and set the cell to its new state!
+This is the `update` function that will get called on each step of the simulation. Here, you're responsible for accessing `map`, and updating its values. Iterate through each row and column using bounds `map.count` and `map[0].count`, and get the neighbor count for each, using `countNeighbors(map, x, y)`. Use `if` statements to check if cells are equal to `nil` and to compare neighbor values, and set the cell to its new state!
     
 Every time you make a change, your code will automatically run. A red overlay on some cells means that that cell value is incorrect.
     
@@ -63,4 +63,7 @@ let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
 sceneView.presentScene(scene)
 XCPlaygroundPage.currentPage.liveView = sceneView
 
-scene.play()
+let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+dispatch_after(delayTime, dispatch_get_main_queue()) {
+    scene.play()
+}

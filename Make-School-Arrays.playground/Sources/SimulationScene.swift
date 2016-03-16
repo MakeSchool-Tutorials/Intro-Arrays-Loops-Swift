@@ -22,6 +22,7 @@ public class SimulationScene: SKScene {
     let palettePosition = CGPoint(x: 10.0, y: 500.0)
     let playButtonPosition = CGPoint(x: 160.0, y: 10.0)
     let stepButtonPosition = CGPoint(x: 10.0, y: 10.0)
+    let generationLabelPosition = CGPoint(x: 10.0, y: 470.0)
     
     public let sim: Simulation
     public let palette: [Character?]
@@ -30,10 +31,13 @@ public class SimulationScene: SKScene {
     let paletteGrid: PaletteGrid
     let playButton: PlayPauseButton
     let stepButton: SKButton
+    let generationLabel: SKLabelNode
     
     var timer: NSTimer? = nil
     
     var liveChar: Character?
+    
+    var generation = 1
     
     public init(sim: Simulation, palette: [Character?], size: CGSize) {
         self.sim = sim
@@ -60,6 +64,13 @@ public class SimulationScene: SKScene {
             liveChar = "■"
         }
         
+        generationLabel = SKLabelNode(text: "Generation: \(generation)")
+        generationLabel.position = generationLabelPosition
+        generationLabel.horizontalAlignmentMode = .Left
+        generationLabel.fontName = "Helvetica Neue"
+        generationLabel.fontSize = 22.0
+        generationLabel.fontColor = UIColor.whiteColor()
+        
         super.init(size: size)
 
         grid.touchCallback = gridCellTouched
@@ -73,6 +84,8 @@ public class SimulationScene: SKScene {
         
         stepButton.touchCallback = stepButtonPressed
         self.addChild(stepButton)
+        
+        self.addChild(generationLabel)
         
         self.backgroundColor = UIColor.grayColor()
     }
@@ -99,6 +112,8 @@ public class SimulationScene: SKScene {
     }
     
     func timerUpdate() {
+        generation++
+        generationLabel.text = "Generation: \(generation)"
         sim.update()
         update()
     }
