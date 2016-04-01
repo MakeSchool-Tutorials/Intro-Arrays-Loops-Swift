@@ -46,9 +46,9 @@ public class SolutionOverlaySimulationScene: SimulationScene {
     }
     
     func checkGrid() {
-        for x in 0..<sim.map.count {
-            for y in 0..<sim.map[x].count {
-                if solutionSim.map[x][y] != sim.map[x][y] {
+        for x in 0..<sim.grid.count {
+            for y in 0..<sim.grid[x].count {
+                if solutionSim.grid[x][y] != sim.grid[x][y] {
                     grid.setTileState(x, y, state: .Incorrect)
                 } else {
                     grid.setTileState(x, y, state: .Default)

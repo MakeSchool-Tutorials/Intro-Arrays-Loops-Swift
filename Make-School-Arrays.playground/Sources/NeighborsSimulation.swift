@@ -9,7 +9,7 @@
 import Foundation
 
 public class NeighborsSimulation: Simulation {
-    public func countNeighbors(map: [[Character?]], x: Int, y: Int) -> Int {
+    public func countNeighbors(grid: [[Character?]], x: Int, y: Int) -> Int {
         return 0
     }
 }

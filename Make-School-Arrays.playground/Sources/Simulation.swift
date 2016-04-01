@@ -10,25 +10,25 @@ import Foundation
 
 public func simFilledWith(char: Character?, size: Int) -> Simulation {
     let sim = Simulation()
-    sim.map = [[Character?]].init(count: size, repeatedValue: [Character?].init(count: size, repeatedValue: char))
+    sim.grid = [[Character?]].init(count: size, repeatedValue: [Character?].init(count: size, repeatedValue: char))
     return sim
 }
 
 public class Simulation {
-    public var map: [[Character?]]
+    public var grid: [[Character?]]
     
     public init() {
-        map = []
+        grid = []
     }
     
     public init(other: Simulation) {
-        map = other.map
+        grid = other.grid
     }
     
     public init?(file: String) {
-        map = []
+        grid = []
         if let temp = readFromFile(file) {
-            map = temp
+            grid = temp
         } else {
             return nil
         }
@@ -38,12 +38,12 @@ public class Simulation {
         let nullChar: Character = "0"
         let reader = StreamReader(path: file)
         if let reader = reader {
-            var map: [[Character?]] = []
+            var grid: [[Character?]] = []
             var rowLength = 0
             while let line = reader.nextLine() {
-                if map.count == 0 {
+                if grid.count == 0 {
                     rowLength = line.characters.count
-                    map = [[Character?]].init(count: rowLength, repeatedValue: [])
+                    grid = [[Character?]].init(count: rowLength, repeatedValue: [])
                 }
                 if line.characters.count != rowLength {
                     // something is wrong
@@ -53,13 +53,13 @@ public class Simulation {
                 for i in 0..<rowLength {
                     let char = line[line.startIndex.advancedBy(i)]
                     if char == nullChar {
-                        map[i].append(nil)
+                        grid[i].append(nil)
                     } else {
-                        map[i].append(char)
+                        grid[i].append(char)
                     }
                 }
             }
-            return map
+            return grid
         } else {
             return nil
         }

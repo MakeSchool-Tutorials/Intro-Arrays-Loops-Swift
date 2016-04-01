@@ -16,49 +16,49 @@ public class GOLSolutionSimulation: Simulation {
     }
     
     public override func update() {
-        var newMap = map // swift copies arrays by value
-        for i in 0..<map.count {
-            for j in 0..<map[i].count {
-                let cell = map[i][j]
-                let neighbors = countNeighbors(map, i: i, j: j)
+        var newGrid = grid // swift copies arrays by value
+        for i in 0..<grid.count {
+            for j in 0..<grid[i].count {
+                let cell = grid[i][j]
+                let neighbors = countNeighbors(grid, i: i, j: j)
                 if cell != nil {
                     if neighbors < 2 {
-                        newMap[i][j] = nil
+                        newGrid[i][j] = nil
                     } else if neighbors < 4 {
-                        newMap[i][j] = liveChar
+                        newGrid[i][j] = liveChar
                     } else {
-                        newMap[i][j] = nil
+                        newGrid[i][j] = nil
                     }
                 } else {
                     if neighbors == 3 {
-                        newMap[i][j] = liveChar
+                        newGrid[i][j] = liveChar
                     }
                 }
             }
         }
-        map = newMap
+        grid = newGrid
     }
     
-    func countNeighbors(map: [[Character?]], i: Int, j: Int) -> Int {
+    func countNeighbors(grid: [[Character?]], i: Int, j: Int) -> Int {
         var count = 0
-        count += isCellAlive(map, i-1, j)
-        count += isCellAlive(map, i+1, j)
-        count += isCellAlive(map, i, j-1)
-        count += isCellAlive(map, i, j+1)
-        count += isCellAlive(map, i-1, j-1)
-        count += isCellAlive(map, i-1, j+1)
-        count += isCellAlive(map, i+1, j-1)
-        count += isCellAlive(map, i+1, j+1)
+        count += isCellAlive(grid, i-1, j)
+        count += isCellAlive(grid, i+1, j)
+        count += isCellAlive(grid, i, j-1)
+        count += isCellAlive(grid, i, j+1)
+        count += isCellAlive(grid, i-1, j-1)
+        count += isCellAlive(grid, i-1, j+1)
+        count += isCellAlive(grid, i+1, j-1)
+        count += isCellAlive(grid, i+1, j+1)
         return count
     }
     
-    func isCellAlive(map: [[Character?]], _ i: Int, _ j: Int) -> Int {
-        if i < 0 || map.count <= i {
+    func isCellAlive(grid: [[Character?]], _ i: Int, _ j: Int) -> Int {
+        if i < 0 || grid.count <= i {
             return 0
         }
-        if j < 0 || map[0].count <= j {
+        if j < 0 || grid[0].count <= j {
             return 0
         }
-        return map[i][j] != nil ? 1 : 0
+        return grid[i][j] != nil ? 1 : 0
     }
 }

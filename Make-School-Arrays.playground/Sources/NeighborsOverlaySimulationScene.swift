@@ -31,10 +31,10 @@ public class NeighborsOverlaySimulationScene: SimulationScene {
     }
     
     func checkNeighbors() {
-        for i in 0..<sim.map.count {
-            for j in 0..<sim.map[i].count {
-                let solutionCount = countNeighbors(sim.map, i: i, j: j)
-                let count = neighborsSim.countNeighbors(sim.map, x: i, y: j)
+        for i in 0..<sim.grid.count {
+            for j in 0..<sim.grid[i].count {
+                let solutionCount = countNeighbors(sim.grid, i: i, j: j)
+                let count = neighborsSim.countNeighbors(sim.grid, x: i, y: j)
                 let color = solutionCount == count ? correctColor : incorrectColor
                 grid.setOverlayText(i, j, text: String(count), color: color)
             }

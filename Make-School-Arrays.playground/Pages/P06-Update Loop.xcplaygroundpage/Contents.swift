@@ -22,7 +22,7 @@ We'll use this Character "■" in order to denote alive cells. This is stored in
     let liveChar: Character = "■"
   
 /*:
-This is the `update` function that will get called on each step of the simulation. Here, you're responsible for accessing `map`, and updating its values. Iterate through each row and column using bounds `map.count` and `map[0].count`, and get the neighbor count for each, using `countNeighbors(map, x, y)`. Use `if` statements to check if cells are equal to `nil` and to compare neighbor values, and set the cell to its new state!
+This is the `update` function that will get called on each step of the simulation. Here, you're responsible for accessing `grid`, and updating its values. Iterate through each row and column using bounds `grid.count` and `grid[0].count`, and get the neighbor count for each, using `countNeighbors(grid, x, y)`. Use `if` statements to check if cells are equal to `nil` and to compare neighbor values, and set the cell to its new state!
     
 Every time you make a change, your code will automatically run. A red overlay on some cells means that that cell value is incorrect.
     
@@ -32,7 +32,7 @@ Hint: Think carefully about what you're doing when you set array elements as you
 */
     override func update() {
         // Student code here!
-        map // this contains your 2D grid! Update this value.
+        grid // this contains your 2D grid! Update this value.
     }
 }
 

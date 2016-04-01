@@ -56,7 +56,7 @@ import SpriteKit
 let size = CGSize(width: 320, height: 576)
 let palette: [Character?] = ["♡", "♡", "♡", "♡", "♡", nil, nil, nil, nil, nil]
 let sim = Simulation()
-sim.map = grid
+sim.grid = grid
 let scene = SimulationScene(sim: sim, palette: palette, size: size)
 let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
 sceneView.presentScene(scene)
