@@ -91,6 +91,7 @@ public class SimulationScene: SKScene {
     }
     
     public override func didMoveToView(view: SKView) {
+        
     }
 
     public required init?(coder aDecoder: NSCoder) {

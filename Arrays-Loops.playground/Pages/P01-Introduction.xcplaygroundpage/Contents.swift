@@ -1,49 +1,44 @@
 /*:
-# An Introduction to Arrays
+ 
+ # An Introduction to Arrays
 
-Arrays are your first foray into dealing with _collections_ of data. So far, you know how to store single values into variables, using `let` and `var`. But what if you wanted to store multiple data, without declaring `let` or `var for each one?
+ Arrays are your first foray into dealing with _collections_ of data. So far, you know how to store single values into variables and constants, using `let` and `var`. But what if you wanted to store lots of data, without declaring a variable or constant for each piece?
 
-Arrays help you solve this problem, by providing you with an _ordered list_ of elements. Think of arrays like a line of buckets available for you to store your data:
+ Arrays help you solve this problem, by providing you with an _ordered list_ of elements. You can picture arrays as a line of buckets available for you to store your data.
 
-![](array.jpg)
+ ![](array.jpg)
 
-In this tutorial, you'll learn how to set up your own arrays, and _iterate_ through each of the elements. Also in the process, you'll code a famous game called __Conway's Game of Life__!
+ In this tutorial, you'll learn how to set up your own arrays, and _iterate_ through each of the elements using _for-loops_. Also in the process, you'll code a famous game called __Conway's Game of Life__!
 
-# Conway's Game of Life
+ # Conway's Game of Life
 
-![](not-game-of-life.png)
+ ![](not-game-of-life.png)
 
-No, not that one!
+ No, not that one!
 
-![](gol.png)
+ ![](gol.png)
 
-Conway's Game of Life is less of a game than a _cellular automaton_ – one that depicts the life and death of a 2D grid of cells, that can be turned either on or off. The cells multiply and die off according to the state of their neighbors, much like how you might expect a colony of bacteria would spread.
+ Conway's Game of Life not quite a game. It's [_cellular automaton_](https://en.wikipedia.org/wiki/Cellular_automaton) –- one that depicts the life and death of of cells on a two-dimensional grid. Each cell can be turned either on or off. The cells multiply and die off according to the state of their neighbors, a lot like spreading bacteria or microorganisms.
 
-The grid of tiles starts out in some configuration of alive and dead cells, as pictured above. Then, on each step, the cells are updated according to the following rules.
+ The grid of cells starts out in a configuration of alive and dead cells. On each step or _generation_, the cells are updated according to the following rules:
 
-- Count how many alive neighbors the cell has (diagonals included).
-- If the cell is alive:
-    - If the cell has _less than_ 2 neighbors, it dies of underpopulation.
-    - If the cell has 2 or 3 neighbors, it stays alive.
-    - If the cell has more than 3 neighbors, it dies of overpopulation.
-- If the cell is dead:
-    - If the dead cell has _exactly_ 3 neighbors, it becomes a live cell, via reproduction!
+ - Count the alive neighbors surrounding the cell
+ - For living cells:
+    - If the cell has _less than_ 2 neighbors, it dies of underpopulation
+    - If the cell has 2 or 3 neighbors, continues living
+    - If the cell has more than 3 neighbors, it dies of overpopulation
+ - For dead cells
+    - If the dead cell has _exactly_ 3 neighbors, it becomes living via reproduction!
 
-What's interesting about this set of rules is that you can create some amazing animated patterns using them. Lo and behold, some of the phenomena found in Game of Life:
+ While these rules seem pretty basic, they lead to some amazing emergent behaviors. Lo and behold, some of the phenomena found in Conway's Game of Life:
 
-### Pulsar
+ - callout(Pulsar): ![](Game_of_life_pulsar.gif)
 
-![](Game_of_life_pulsar.gif)
+ - callout(Glider): ![](Game_of_life_animated_glider.gif)
 
-### Glider
+ - callout(Glider Gun): ![](Gospers_glider_gun.gif)
 
-![](Game_of_life_animated_glider.gif)
-
-### Glider Gun
-
-![](Gospers_glider_gun.gif)
-
-Click the Next button, and we'll be on our way to creating the Game of Life, using arrays!
+ Click the Next button, and we'll be on our way to creating Conway's Game of Life!
 
 */
 //: [Next](@next)
