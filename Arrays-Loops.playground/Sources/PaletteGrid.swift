@@ -29,8 +29,8 @@ public class PaletteGrid: TouchableGrid {
     }
     
     public func highlightCell(x: Int) {
-        if let highlighted = highlighted {
-            if x != highlighted {
+        if x != highlighted {
+            if let highlighted = highlighted {
                 let cell = self.shapeMap[highlighted][0]
                 cell.lineWidth = tileDefaultLineWidth
                 cell.strokeColor = tileDefaultLineColor

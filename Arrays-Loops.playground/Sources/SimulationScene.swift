@@ -23,8 +23,8 @@ public class SimulationScene: SKScene {
     
     var grid: TouchableGrid!
     var paletteGrid: PaletteGrid!
-    var playButton: MSPlayPauseToggleButtonNode!
-    var stepButton: MSButtonNode!
+    public var playButton: MSPlayPauseToggleButtonNode!
+    public var stepButton: MSButtonNode!
     var generationLabel: SKLabelNode!
     
     var timer: NSTimer? = nil
@@ -44,6 +44,9 @@ public class SimulationScene: SKScene {
         stepButton = childNodeWithName("stepButton") as! MSButtonNode
         playButton.selectedHandler = playPausePressed
         stepButton.selectedHandler = stepButtonPressed
+        
+        playButton.state = .Hidden
+        stepButton.state = .Hidden
                 
         generationLabel = childNodeWithName("generationLabel") as! SKLabelNode
         grid = childNodeWithName("grid") as! TouchableGrid

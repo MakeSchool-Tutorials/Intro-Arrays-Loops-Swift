@@ -22,13 +22,22 @@ var palette: [Character?] = []
  
  */
 
-for index in 0..<5 {
-    palette.append("🐱")
-}
 
-for index in 0..<2 {
-    palette.append(nil)
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

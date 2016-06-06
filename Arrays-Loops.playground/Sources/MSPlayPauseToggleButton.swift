@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class MSPlayPauseToggleButtonNode: MSButtonNode {
+public class MSPlayPauseToggleButtonNode: MSButtonNode {
     
     internal var toggled: Bool = false {
         didSet {
@@ -23,7 +23,7 @@ class MSPlayPauseToggleButtonNode: MSButtonNode {
     let onText = "Pause"
     let label = SKLabelNode()
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         label.text = offText
@@ -36,7 +36,7 @@ class MSPlayPauseToggleButtonNode: MSButtonNode {
         self.addChild(label)
     }
     
-    override func mouseUp(theEvent: NSEvent) {
+    override public func mouseUp(theEvent: NSEvent) {
         toggled = !toggled
         super.mouseUp(theEvent)
     }

@@ -24,9 +24,11 @@ var grid: [[Character?]] = []
 
  We now have a column of empty cells! 
  
- - callout(Challenge): Try utilizing some for-loop logic to append 7 more of these empty columns to make a 8x10 grid.
+ - callout(Challenge): Try utilizing some for-loop logic to append 8 of these empty columns to make a 8x10 grid.
  
 */
+
+
 
 
 

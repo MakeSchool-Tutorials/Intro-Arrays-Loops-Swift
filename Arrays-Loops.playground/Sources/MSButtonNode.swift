@@ -8,17 +8,17 @@
 
 import SpriteKit
 
-enum MSButtonNodeState {
+public enum MSButtonNodeState {
     case Active, Selected, Hidden
 }
 
-class MSButtonNode: SKSpriteNode {
+public class MSButtonNode: SKSpriteNode {
     
     /* Setup a dummy action closure */
     var selectedHandler: () -> Void = { print("No button action set") }
     
     /* Button state management */
-    var state: MSButtonNodeState = .Active {
+    public var state: MSButtonNodeState = .Active {
         didSet {
             switch state {
             case .Active:
@@ -44,7 +44,7 @@ class MSButtonNode: SKSpriteNode {
     }
     
     /* Support for NSKeyedArchiver (loading objects from SK Scene Editor */
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         
         /* Call parent initializer e.g. SKSpriteNode */
         super.init(coder: aDecoder)
@@ -54,11 +54,11 @@ class MSButtonNode: SKSpriteNode {
     }
     
     // MARK: - Mouse handling
-    override func mouseDown(theEvent: NSEvent) {
+    override public func mouseDown(theEvent: NSEvent) {
         state = .Selected
     }
     
-    override func mouseUp(theEvent: NSEvent) {
+    override public func mouseUp(theEvent: NSEvent) {
         selectedHandler()
         state = .Active
     }

@@ -28,7 +28,7 @@ public class TouchableGrid: SKSpriteNode {
     public var tileDefaultColor = SKColor.clearColor()
     public var textIncorrectColor = SKColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
     public var tileIncorrectColor = SKColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
-    public var tileDefaultLineWidth: CGFloat = 1.0
+    public var tileDefaultLineWidth: CGFloat = 3.0
     public var tileDefaultLineColor = SKColor.blackColor()
     let verticalOffset: CGFloat = 16
     
@@ -51,7 +51,8 @@ public class TouchableGrid: SKSpriteNode {
             var col: [SKShapeNode] = []
             for y in 0..<height {
                 let shape = SKShapeNode(rect: CGRect(x: 0, y: 0, width: tileSize, height: tileSize))
-                shape.lineWidth = 0
+                shape.lineWidth = tileDefaultLineWidth
+                shape.strokeColor = tileDefaultLineColor
                 shape.position = CGPoint(x: CGFloat(x)*tileSize, y: CGFloat(y)*tileSize + verticalOffset)
                 shape.zPosition = 10
                 col.append(shape)
