@@ -15,11 +15,10 @@ public class NeighborsOverlaySimulationScene: SimulationScene {
     let correctColor = SKColor.greenColor()
     let incorrectColor = SKColor.redColor()
     
-    public func setup(simulation sim: Simulation, palette: [Character?], neighborsSim: NeighborsSimulation) {
-        self.neighborsSim = neighborsSim
-        self.setup(simulation: sim, palette: palette)
+    public func setup(neighborsSim neighborsSim: NeighborsSimulation, palette: [Character?]) {
+        super.setup(simulation: neighborsSim, palette: palette)
         
-        checkNeighbors()
+        self.neighborsSim = neighborsSim
     }
     
     override func timerUpdate() {
@@ -27,7 +26,7 @@ public class NeighborsOverlaySimulationScene: SimulationScene {
         checkNeighbors()
     }
     
-    func checkNeighbors() {
+    public func checkNeighbors() {
         for i in 0..<sim.grid.count {
             for j in 0..<sim.grid[i].count {
                 let solutionCount = countNeighbors(sim.grid, column: i, row: j)

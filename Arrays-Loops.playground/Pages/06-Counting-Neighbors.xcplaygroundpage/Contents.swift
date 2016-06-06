@@ -29,8 +29,7 @@ class MySimulation: NeighborsSimulation {
 */
     
     func getAlive(grid: [[Character?]], column x: Int, row y: Int) -> Int {
-        
-        
+
         
         
         
@@ -101,7 +100,8 @@ let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
 sceneView.wantsLayer = true
 let scene = NeighborsOverlaySimulationScene(fileNamed: "SimulationScene")!
 let path = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
-scene.setup(simulation: MySimulation(file: path)!, palette: defaultPalette())
+scene.setup(neighborsSim: MySimulation(file: path)!, palette: defaultPalette())
 scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
+scene.checkNeighbors()
 XCPlaygroundPage.currentPage.liveView = sceneView

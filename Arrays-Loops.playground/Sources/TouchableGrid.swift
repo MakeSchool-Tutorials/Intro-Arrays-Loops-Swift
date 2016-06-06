@@ -131,6 +131,7 @@ public class TouchableGrid: SKSpriteNode {
         } else {
             if let text = text {
                 let newLabel = labelFactory(text, x: x, y: y)
+                newLabel.fontColor = color
                 self.addChild(newLabel)
                 map[x][y] = newLabel
             }
@@ -154,9 +155,9 @@ public class TouchableGrid: SKSpriteNode {
         case .Incorrect:
             if let label = label {
                 label.fontColor = textIncorrectColor
-            } else {
-                shape.fillColor = tileIncorrectColor
             }
+            shape.fillColor = tileIncorrectColor
+            
         }
     }
 }
