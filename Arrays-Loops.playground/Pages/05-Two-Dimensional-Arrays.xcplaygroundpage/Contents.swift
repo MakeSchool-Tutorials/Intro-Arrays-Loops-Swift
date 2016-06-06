@@ -90,10 +90,13 @@ Don't worry about this code. It handles the display.
 import XCPlayground
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
+let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+sceneView.wantsLayer = true
+let scene = SolutionOverlaySimulationScene(fileNamed: "SimulationScene")!
 let palette: [Character?] = ["🐱", "🐱", "🐱", "🐱", "🐱", nil, nil, nil]
 let sim = Simulation()
 sim.grid = grid
-let scene = SimulationScene(sim: sim, palette: palette, size: size)
-let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+scene.setup(simulation: sim, palette: palette)
+scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
 XCPlaygroundPage.currentPage.liveView = sceneView

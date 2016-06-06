@@ -26,10 +26,9 @@ for index in 0..<5 {
     palette.append("🐱")
 }
 
-for index in 0..<1 {
+for index in 0..<2 {
     palette.append(nil)
 }
-
 
 
 
@@ -78,14 +77,17 @@ for index in 0..<1 {
 
 
 
-
 /*:
  Don't worry about this code. It handles the display.
  */
 import XCPlayground
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
-let scene = SolutionOverlaySimulationScene(sim: EmptySimulation(), palette: palette, solutionSim: EmptySimulation(), solutionPalette: solutionArray(), size: size)
 let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+sceneView.wantsLayer = true
+let scene = SolutionOverlaySimulationScene(fileNamed: "SimulationScene")!
+scene.setup(simulation: EmptySimulation(), palette: palette)
+scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
+scene.setup(solutionSim: EmptySimulation(), solutionPalette: solutionArray())
 XCPlaygroundPage.currentPage.liveView = sceneView

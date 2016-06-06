@@ -8,28 +8,33 @@
 
 import SpriteKit
 
-public class TouchableGrid: SKNode {
+public class TouchableGrid: SKSpriteNode {
     
-    var map: [[SKLabelNode?]]
-    var shapeMap: [[SKShapeNode]]
-    var overlayTextMap: [[SKLabelNode?]]
+    var map: [[SKLabelNode?]]!
+    var shapeMap: [[SKShapeNode]]!
+    var overlayTextMap: [[SKLabelNode?]]!
     var width: Int {
         return map.count
     }
+    
     var height: Int {
         return (map.count != 0) ? map[0].count : 0
     }
-    let tileSize: CGFloat = 30
+    
+    let tileSize: CGFloat = 76
     public var touchCallback: ((Int, Int) -> Void)? = nil
     
-    public var textDefaultColor = UIColor.whiteColor()
-    public var tileDefaultColor = UIColor.clearColor()
-    public var textIncorrectColor = UIColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
-    public var tileIncorrectColor = UIColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
+    public var textDefaultColor = SKColor.whiteColor()
+    public var tileDefaultColor = SKColor.clearColor()
+    public var textIncorrectColor = SKColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
+    public var tileIncorrectColor = SKColor.init(red: 0.8, green: 0, blue: 0, alpha: 1.0)
     public var tileDefaultLineWidth: CGFloat = 1.0
-    public var tileDefaultLineColor = UIColor.blackColor()
+    public var tileDefaultLineColor = SKColor.blackColor()
+    let verticalOffset: CGFloat = 16
     
-    public init(charMap: [[Character?]]) {
+    func setup(charMap: [[Character?]]) {
+        self.userInteractionEnabled = true
+        
         if (charMap.count != 0) {
             map = [[SKLabelNode?]].init(count: charMap.count,
                 repeatedValue: [SKLabelNode?].init(count: charMap[0].count, repeatedValue: nil))
@@ -39,42 +44,37 @@ public class TouchableGrid: SKNode {
             map = []
             overlayTextMap = []
         }
+        
         shapeMap = []
         
-        super.init()
-        self.userInteractionEnabled = true
-
         for x in 0..<width {
             var col: [SKShapeNode] = []
             for y in 0..<height {
                 let shape = SKShapeNode(rect: CGRect(x: 0, y: 0, width: tileSize, height: tileSize))
-                shape.strokeColor = tileDefaultLineColor
-                shape.lineWidth = tileDefaultLineWidth
-                shape.fillColor = tileDefaultColor
-                shape.position = CGPoint(x: CGFloat(x)*tileSize, y: CGFloat(y)*tileSize)
-                shape.zPosition = 0
+                shape.lineWidth = 0
+                shape.position = CGPoint(x: CGFloat(x)*tileSize, y: CGFloat(y)*tileSize + verticalOffset)
+                shape.zPosition = 10
                 col.append(shape)
                 self.addChild(shape)
             }
             shapeMap.append(col)
         }
+        
         updateAll(charMap)
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
-    override public func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if let touch = touches.first {
-            let touchPosition = touch.locationInNode(self)
-            let x = Int(touchPosition.x / tileSize)
-            let y = Int(touchPosition.y / tileSize)
-            if 0 <= x && x < width &&
-               0 <= y && y < height {
-                if let touchCallback = touchCallback {
-                    touchCallback(x, y)
-                }
+    public override func mouseDown(theEvent: NSEvent) {
+        let touchPosition = theEvent.locationInNode(self)
+        let x = Int(touchPosition.x / tileSize)
+        let y = Int((touchPosition.y - verticalOffset) / tileSize)
+        if 0 <= x && x < width &&
+            0 <= y && y < height {
+            if let touchCallback = touchCallback {
+                touchCallback(x, y)
             }
         }
     }
@@ -85,6 +85,18 @@ public class TouchableGrid: SKNode {
                 setCell(i, y: j, char: map[i][j])
             }
         }
+    }
+    
+    func labelFactory(char: String, x: Int, y: Int) -> SKLabelNode {
+        let newLabel = SKLabelNode(text: String(char))
+        newLabel.verticalAlignmentMode = .Baseline
+        newLabel.horizontalAlignmentMode = .Center
+        newLabel.fontSize = 54.0
+        newLabel.fontName = "Menlo Bold"
+        let baselineOffest: CGFloat = 14.0
+        newLabel.position = CGPoint(x: (CGFloat(x)+0.5) * tileSize, y: (CGFloat(y)) * tileSize + verticalOffset + baselineOffest)
+        newLabel.zPosition = 10
+        return newLabel
     }
     
     public func setCell(x: Int, y: Int, char: Character?) {
@@ -98,20 +110,14 @@ public class TouchableGrid: SKNode {
             }
         } else {
             if let char = char {
-                let newLabel = SKLabelNode(text: String(char))
-                newLabel.verticalAlignmentMode = .Center
-                newLabel.horizontalAlignmentMode = .Center
-                newLabel.fontSize = 28.0
-                newLabel.fontName = "Helvetica Neue"
-                newLabel.position = CGPoint(x: (CGFloat(x)+0.5) * tileSize, y: (CGFloat(y)+0.5) * tileSize)
-                newLabel.zPosition = 1
+                let newLabel = labelFactory(String(char), x: x, y: y)
                 self.addChild(newLabel)
                 map[x][y] = newLabel
             }
         }
     }
     
-    public func setOverlayText(x: Int, _ y: Int, text: String?, color: UIColor) {
+    public func setOverlayText(x: Int, _ y: Int, text: String?, color: SKColor) {
         let label = overlayTextMap[x][y]
         if let label = label {
             if let text = text {
@@ -123,16 +129,9 @@ public class TouchableGrid: SKNode {
             }
         } else {
             if let text = text {
-                let newLabel = SKLabelNode(text: text)
-                newLabel.verticalAlignmentMode = .Center
-                newLabel.horizontalAlignmentMode = .Center
-                newLabel.fontSize = 28.0
-                newLabel.fontName = "Helvetica Neue"
-                newLabel.position = CGPoint(x: (CGFloat(x)+0.5) * tileSize, y: (CGFloat(y)+0.5) * tileSize)
-                newLabel.zPosition = 2
-                newLabel.fontColor = color
+                let newLabel = labelFactory(text, x: x, y: y)
                 self.addChild(newLabel)
-                overlayTextMap[x][y] = newLabel
+                map[x][y] = newLabel
             }
         }
     }

@@ -10,19 +10,16 @@ import SpriteKit
 
 public class NeighborsOverlaySimulationScene: SimulationScene {
     
-    let neighborsSim: NeighborsSimulation
+    var neighborsSim: NeighborsSimulation = NeighborsSimulation()
     
-    let correctColor = UIColor.greenColor()
-    let incorrectColor = UIColor.redColor()
+    let correctColor = SKColor.greenColor()
+    let incorrectColor = SKColor.redColor()
     
-    public init(sim: NeighborsSimulation, palette: [Character?], size: CGSize) {
-        self.neighborsSim = sim
-        super.init(sim: sim, palette: palette, size: size)
+    public func setup(simulation sim: Simulation, palette: [Character?], neighborsSim: NeighborsSimulation) {
+        self.neighborsSim = neighborsSim
+        self.setup(simulation: sim, palette: palette)
+        
         checkNeighbors()
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func timerUpdate() {

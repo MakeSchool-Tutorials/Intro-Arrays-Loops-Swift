@@ -10,20 +10,15 @@ import SpriteKit
 
 public class SolutionOverlaySimulationScene: SimulationScene {
     
-    public let solutionSim: Simulation
-    public let solutionPalette: [Character?]
+    public var solutionSim: Simulation = Simulation()
+
+    public var solutionPalette = [Character?]()
     
-    public init(sim: Simulation, palette: [Character?], solutionSim: Simulation, solutionPalette: [Character?], size: CGSize) {
+    public func setup(solutionSim solutionSim: Simulation, solutionPalette: [Character?]) {
         self.solutionSim = solutionSim
         self.solutionPalette = solutionPalette
-        
-        super.init(sim: sim, palette: palette, size: size)
         checkPalette()
         checkGrid()
-    }
-
-    public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func timerUpdate() {
@@ -34,14 +29,16 @@ public class SolutionOverlaySimulationScene: SimulationScene {
     }
     
     func checkPalette() {
-//        let maxLen = max(solutionPalette.count, palette.count)
-        // TODO: stop assuming lengths are same
-        for x in 0..<palette.count {
+        let maxLen = min(solutionPalette.count, palette.count)
+        for x in 0..<maxLen {
             if solutionPalette[x] != palette[x] {
                 paletteGrid.setTileState(x, 0, state: .Incorrect)
             } else {
                 paletteGrid.setTileState(x, 0, state: .Default)
             }
+        }
+        if solutionPalette.count != palette.count {
+            print("Palette grid is not the right length! Should have \(solutionPalette.count) elements but has \(palette.count) elements!")
         }
     }
     

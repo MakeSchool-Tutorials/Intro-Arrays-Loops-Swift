@@ -8,9 +8,9 @@
 
 import Foundation
 
-public func simFilledWith(char: Character?, size: Int) -> Simulation {
+public func simFilledWith(char: Character?, columns: Int, rows: Int) -> Simulation {
     let sim = Simulation()
-    sim.grid = [[Character?]].init(count: size, repeatedValue: [Character?].init(count: size, repeatedValue: char))
+    sim.grid = [[Character?]].init(count: columns, repeatedValue: [Character?].init(count: rows, repeatedValue: char))
     return sim
 }
 

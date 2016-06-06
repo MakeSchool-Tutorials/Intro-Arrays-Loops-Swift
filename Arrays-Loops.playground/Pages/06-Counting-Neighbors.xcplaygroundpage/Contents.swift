@@ -97,8 +97,11 @@ Don't worry about this code. It handles the display.
 import XCPlayground
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
-let path = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
-let scene = NeighborsOverlaySimulationScene(sim: MySimulation(file: path)!, palette: defaultPalette(), size: size)
 let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+sceneView.wantsLayer = true
+let scene = NeighborsOverlaySimulationScene(fileNamed: "SimulationScene")!
+let path = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
+scene.setup(simulation: MySimulation(file: path)!, palette: defaultPalette())
+scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
 XCPlaygroundPage.currentPage.liveView = sceneView

@@ -94,15 +94,18 @@ Don't worry about this code. It handles the display.
 import XCPlayground
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
+let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+sceneView.wantsLayer = true
+let scene = SolutionOverlaySimulationScene(fileNamed: "SimulationScene")!
 let path = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
 let sim = MySimulation(file: path)!
 let comparisonSim = GOLSolutionSimulation(other: sim)
-let scene = SolutionOverlaySimulationScene(sim: sim, palette: defaultPalette(), solutionSim: comparisonSim, solutionPalette: defaultPalette(), size: size)
-let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+scene.setup(simulation: sim, palette: defaultPalette())
+scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
+scene.setup(solutionSim: comparisonSim, solutionPalette: defaultPalette())
 XCPlaygroundPage.currentPage.liveView = sceneView
-
 let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
 dispatch_after(delayTime, dispatch_get_main_queue()) {
-    scene.play()
+    scene.toggleButton()
 }
