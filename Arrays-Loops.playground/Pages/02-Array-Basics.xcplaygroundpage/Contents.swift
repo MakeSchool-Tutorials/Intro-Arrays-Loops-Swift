@@ -3,7 +3,7 @@
 
  # Array Basics
 
- In order to make our Game Of Life simulation, we will first need to create a "palette" for the different kinds of `Characters` that the user will be able to place on the grid cells. We will be using a one-dimensional array to store this pallete.
+ In order to make our Game of Life simulation, we will first need to create a "palette" for the different kinds of `Characters` that the user will be able to place on the grid cells. We will be using a one-dimensional array to store this pallete.
 
  In many ways, you already know how to manipulate array variables. They behave similarly to normal variables. Shown below is a standard way to initialize an _empty_ array, using `let`.
  
@@ -23,7 +23,7 @@ let palette: [Character] = []
 
  - callout(Try it out): Try overwriting the empty array literal (right of the equals sign in the code above) with the array below. This represents three `Character` elements, enclosed within an array. Watch how the palette appears to reflect your changes!
  
-    `["♡", "😀", "😜"]`
+    `["🐱", "😀", "😜"]`
 
  ## Indexing
 
@@ -33,7 +33,7 @@ let palette: [Character] = []
 
  In order to retrieve an _element_ of an array, you _postpend_ the variable with brackets containing the _index_ number of the element you wish to retrieve.
  
- - important: Array indices start from 0 and end with 1 less than the number of elements in it!_ So in this example, _palette[1]_ will return the _second_ element in the array, and palette[3] will yield an __error__.
+ - important: Array indices start from 0 and end with 1 less than the number of elements in it!_ So in this example, `palette[1]` will return the _second_ element in the array, and `palette[3]` will yield an __error__.
 
  The below image shows how an example array might be initalized, with the indices to the elements shown above each cell:
 
@@ -79,14 +79,14 @@ exampleArray[4]
  
  ## Appending
 
- What if you want to _insert_ an element, changing the size of an array? `palette[3] = "♡"` won't work, since accessing an array bound it's bounds causes an error. This is where `append()` comes in!
+ What if you want to _insert_ an element, changing the size of an array? `palette[3] = "🐱"` won't work, since accessing an array bound it's bounds causes an error. This is where `append()` comes in!
 
 
  - callout(Try it out): Try running this code.
  
-    `palette.append("♡")`
+    `palette.append("🐱")`
  
- Now, a new "♡" character has been tacked on to the back of the array, and it's size has increased by one.
+ Now, a new "🐱" character has been tacked on to the back of the array, and it's size has increased by one.
 
  - note: You can verify that the size of the array has changed, by checking its `count` property:
 
@@ -174,7 +174,7 @@ exampleArray[4]
         // loop code here
     }
 
- Right now this isn't entirely useful since we need the index of the array in order to set the elements, but this might be useful in the future.
+ - note: We will not be using this syntax right now since we need the index of the array in order to update the elements, but this might be useful in the future.
 
  Press Next to go on!
  
@@ -201,14 +201,14 @@ exampleArray[4]
 
 
 /*:
-Don't worry about this code. This takes the scene and deck information and displays it.
+Don't worry about this code. It handles the display.
 */
 import XCPlayground
 import SpriteKit
-let size = CGSize(width: 320, height: 576)
-let comparisonSim = simFilledWith("♡", size: 10)
-let comparisonPalette = paletteFilledWith("♡", size: 10)
+let size = CGSize(width: 320, height: 568)
+let comparisonSim = simFilledWith("🐱", size: 10)
+let comparisonPalette = paletteFilledWith("🐱", size: 10)
 let scene = SimulationScene(sim: EmptySimulation(), palette: convertToOptional(palette), size: size)
 let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
 sceneView.presentScene(scene)
-XCPlaygroundPage.currentPage.liveView = sceneView
+XCPlaygroundPage.currentPage.liveView = scen

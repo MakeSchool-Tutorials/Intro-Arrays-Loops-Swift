@@ -10,7 +10,7 @@ import Foundation
 
 public class GOLSolutionSimulation: Simulation {
     
-    public var liveChar: Character = "■"
+    public var liveChar: Character = "👾"
     
     public override func setup() {
     }

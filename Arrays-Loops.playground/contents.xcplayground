@@ -2,10 +2,11 @@
 <playground version='6.0' target-platform='ios' display-mode='rendered'>
     <pages>
         <page name='01-Introduction'/>
-        <page name='02-Initialization'/>
+        <page name='02-Array-Basics'/>
         <page name='03-Optionals'/>
-        <page name='04-2D Arrays'/>
-        <page name='05-Counting Neighbors'/>
-        <page name='06-Update Loop'/>
+        <page name='04-Setting-up-the-palette'/>
+        <page name='05-Two-Dimensional-Arrays'/>
+        <page name='06-Counting-Neighbors'/>
+        <page name='07-Update-Loop'/>
     </pages>
 </playground>

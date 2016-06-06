@@ -2,7 +2,7 @@ import Foundation
 
 public class NeighborsSolutionSimulation: Simulation {
     
-    public func countNeighbors(map: [[Character?]], _ x: Int, _ y: Int) -> Int {
+    public func countNeighbors(map: [[Character?]], column x: Int, row y: Int) -> Int {
         var count = 0
         count += isCellAlive(map, x-1, y)
         count += isCellAlive(map, x+1, y)

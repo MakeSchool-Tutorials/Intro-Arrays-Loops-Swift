@@ -1,0 +1,91 @@
+//: [Previous](@previous)
+/*:
+
+ # Setting up the palette
+ 
+ ## Back to arrays
+ 
+ `nil` is going to be handy in order to represent empty buckets in our palette of Characters, but first we need to modify our `palette` variable to be of the right type. Now instead of being an array of `Character`s, our palette is going to be an array of `Character` optionals:
+ 
+ */
+
+var palette: [Character?] = []
+
+/*:
+ 
+ - callout(Challenge): Using our newfound knowledge of for-loops and Optionals, set the palette to an array of size 8:
+ 
+    - Make the first 5 elements are set to "🐱"
+    - Make the remaining 3 elements empty (`nil`).
+ 
+    The display on the right will tell you if your array is correct: if any of your cells light up red, that's an incorrect value! Refer back to the previous pages if you need a refresher on syntax.
+ 
+ */
+
+for index in 0..<5 {
+    palette.append("🐱")
+}
+
+for index in 0..<1 {
+    palette.append(nil)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//: [Next](@next)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*:
+ Don't worry about this code. It handles the display.
+ */
+import XCPlayground
+import SpriteKit
+let size = CGSize(width: 320, height: 568)
+let scene = SolutionOverlaySimulationScene(sim: EmptySimulation(), palette: palette, solutionSim: EmptySimulation(), solutionPalette: solutionArray(), size: size)
+let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+sceneView.presentScene(scene)
+XCPlaygroundPage.currentPage.liveView = sceneView

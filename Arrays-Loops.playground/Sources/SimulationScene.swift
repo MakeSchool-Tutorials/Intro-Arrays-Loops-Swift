@@ -9,7 +9,7 @@
 import SpriteKit
 
 public func defaultPalette() -> [Character?] {
-    return ["♡", "■", nil, nil, nil, nil, nil, nil, nil, nil]
+    return ["👾", "🐱", nil, nil, nil, nil, nil, nil]
 }
 
 public func paletteFilledWith(char: Character?, size: Int) -> [Character?] {
@@ -61,7 +61,7 @@ public class SimulationScene: SKScene {
             liveChar = palette[0]
             paletteGrid.highlightCell(0)
         } else {
-            liveChar = "■"
+            liveChar = "👾"
         }
         
         generationLabel = SKLabelNode(text: "Generation: \(generation)")
@@ -113,7 +113,7 @@ public class SimulationScene: SKScene {
     }
     
     func timerUpdate() {
-        generation++
+        generation += 1
         generationLabel.text = "Generation: \(generation)"
         sim.update()
         update()
@@ -129,7 +129,7 @@ public class SimulationScene: SKScene {
     
     func playPausePressed(playing: Bool) {
         if (playing) {
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerUpdate", userInfo: nil, repeats: true)
+            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(SimulationScene.timerUpdate), userInfo: nil, repeats: true)
             timer?.fire()
             stepButton.disabled = true
         } else {

@@ -33,28 +33,28 @@ public class NeighborsOverlaySimulationScene: SimulationScene {
     func checkNeighbors() {
         for i in 0..<sim.grid.count {
             for j in 0..<sim.grid[i].count {
-                let solutionCount = countNeighbors(sim.grid, i: i, j: j)
-                let count = neighborsSim.countNeighbors(sim.grid, x: i, y: j)
+                let solutionCount = countNeighbors(sim.grid, column: i, row: j)
+                let count = neighborsSim.countNeighbors(sim.grid, column: i, row: j)
                 let color = solutionCount == count ? correctColor : incorrectColor
                 grid.setOverlayText(i, j, text: String(count), color: color)
             }
         }
     }
     
-    func countNeighbors(map: [[Character?]], i: Int, j: Int) -> Int {
+    func countNeighbors(map: [[Character?]], column i: Int, row j: Int) -> Int {
         var count = 0
-        count += isCellAlive(map, i-1, j)
-        count += isCellAlive(map, i+1, j)
-        count += isCellAlive(map, i, j-1)
-        count += isCellAlive(map, i, j+1)
-        count += isCellAlive(map, i-1, j-1)
-        count += isCellAlive(map, i-1, j+1)
-        count += isCellAlive(map, i+1, j-1)
-        count += isCellAlive(map, i+1, j+1)
+        count += isCellAlive(map, column: i-1, row: j)
+        count += isCellAlive(map, column: i+1, row: j)
+        count += isCellAlive(map, column: i, row: j-1)
+        count += isCellAlive(map, column: i, row: j+1)
+        count += isCellAlive(map, column: i-1, row: j-1)
+        count += isCellAlive(map, column: i-1, row: j+1)
+        count += isCellAlive(map, column: i+1, row: j-1)
+        count += isCellAlive(map, column: i+1, row: j+1)
         return count
     }
     
-    func isCellAlive(map: [[Character?]], _ i: Int, _ j: Int) -> Int {
+    func isCellAlive(map: [[Character?]], column i: Int, row j: Int) -> Int {
         if i < 0 || map.count <= i {
             return 0
         }
