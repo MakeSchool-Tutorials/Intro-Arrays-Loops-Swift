@@ -13,7 +13,7 @@ let palette: [Character] = []
 
 /*:
  
- - note: A `String` is made up of `Character`s. A `Character` is just a single element `String`! It cannot store more than one letter/number/special characters.
+ - note: A `String` is made up of `Character`s. A `Character` is just a single element `String`! It cannot store more than one letter/number/special characters. An `Array` can hold any data type as long as every element in it is the same data type! We'll be working with `Array`'s holding `Character`s most of this playground.
  
  ## Declaring Arrays
 
@@ -24,6 +24,8 @@ let palette: [Character] = []
  - callout(Try it out): Try overwriting the empty array literal (right of the equals sign in the code above) with the array below. This represents three `Character` elements, enclosed within an array. Watch how the palette appears to reflect your changes!
  
     `["🐱", "😀", "😜"]`
+ 
+ - important: You open up an emoji keyboard by pressing `control + command + space`. Do not forget the `"` around the emoji characters!
 
  ## Indexing
 
