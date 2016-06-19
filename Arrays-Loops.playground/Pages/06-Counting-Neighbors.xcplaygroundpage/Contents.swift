@@ -8,9 +8,9 @@ class MySimulation: NeighborsSimulation {
  In the display to the right, you'll see that we've provided an overlay of the number of neighbors that your code will count. As you can see, all of the cells currently return 1, which is obviously incorrect. We'll fix this soon, so that all of the numbers will show the correct numbers and light up green!
 
  ## Is the cell living?
-     
- Before we do our neighbor counting logic, let's instead prepare for ourselves a helper function -– something that will help us simplify our logic when we write a `countNeighbors` function later on. 
-     
+
+ Before we do our neighbor counting logic, let's instead prepare for ourselves a helper function -– something that will help us simplify our logic when we write a `countNeighbors` function later on.
+
  - callout(Challenge): Here, we have a `getAlive` function, which takes a `grid` of `[[Character?]]`, and `x` and `y` coordinates for the cell in question.
 
      Given these parameters, you should:
@@ -24,65 +24,65 @@ class MySimulation: NeighborsSimulation {
  Write your code inside the following function:
 
 */
-    
+
     func getAlive(grid: [[Character?]], column x: Int, row y: Int) -> Int {
 
-        
-        
-        
+
+
+
         return 1
     }
-    
+
 /*:
-     
+
  ## Counting the neighboring cells
-     
+
  Great! Now, we have to fill in the `countNeighbors` function. It should return an `Int` containing the number of neighboring cells a specific cell has. It is passed a `grid` of `[[Character?]]`, and `x` and `y` coordinates.
-    
+
  To do this, we'll call our `getAlive` function on all the neighboring `x` & `y`. If it returns 0, that means that the cell is empty or that those are invalid coordinates – no error-checking necessary assuming you wrote `getAlive` correctly!
 
  To call `getAlive`, you can use a syntax like this:
 
     let alive = getAlive(grid, column: x - 1, row: y)
-     
+
  - note: We discussed this breifly in the Functions Playground. `getAlive` was declared with custom parameter labels of `column` and `row` for the `x` & `y` values!
 
  - callout(Hint): `alive` will then contain a 1 or 0 indicating status of the cell to the _left_ of the coordinate! Now all you have to do is call the function 8 times, in each of the directions (including diagonals) and add all of them up.
-    
+
      If you get red numbers in the overlay, check your logic again (including `getAlive`) – look at which numbers are wrong to you pinpoint any bugs in your code. Grab a pen and some paper if you need to.
-     
+
 */
-    
-    
+
+
     override func countNeighbors(grid: [[Character?]], column x: Int, row y: Int) -> Int {
-        
-        
-        
-        
+
+
+
+
         return 1
     }
-    
-    
-    
+
+
+
 //: [Previous](@previous) | [Next](@next)
 
 
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -101,4 +101,4 @@ scene.setup(neighborsSim: MySimulation(file: path)!, palette: defaultPalette())
 scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
 scene.checkNeighbors()
-XCPlaygroundPage.currentPa
+XCPlaygroundPage.currentPage.liveView = sceneView
