@@ -20,8 +20,6 @@ class MySimulation: NeighborsSimulation {
      - If you haven't returned 0 yet, then return 1.
 
  - callout(Hint): To get the number of columns in grid, you can use `grid.count`. To get the number of rows, you can get the size of the first column: `grid[0].count`
-     
-     You'll need to use nested for-loops to solve this! A for-loop inside of a for-loop.
 
  Write your code inside the following function:
 
