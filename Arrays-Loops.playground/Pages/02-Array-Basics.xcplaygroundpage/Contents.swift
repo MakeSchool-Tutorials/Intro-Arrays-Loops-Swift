@@ -1,6 +1,5 @@
-//: [Previous](@previous)
 /*:
-
+ ![Make School Banner](./swift_banner.png)
  # Array Basics
 
  In order to make our Game of Life simulation, we will first need to create a "palette" for the different kinds of `Characters` that the user will be able to place on the grid cells. We will be using a one-dimensional array to store this pallete.
@@ -181,7 +180,7 @@ exampleArray[4]
  Press Next to go on!
  
 */
-//: [Next](@next)
+//: [Previous](@previous) | [Next](@next)
 
 
 
@@ -214,4 +213,4 @@ let scene = SimulationScene(fileNamed: "SimulationScene")!
 scene.setup(simulation: EmptySimulation(), palette: convertToOptional(palette))
 scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
-XCPlaygroundPage.currentPage.liveView = sceneView
+XCPlaygroundPage.currentPa

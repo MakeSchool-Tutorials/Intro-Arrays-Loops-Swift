@@ -1,6 +1,5 @@
-//: [Previous](@previous)
 /*:
- 
+ ![Make School Banner](./swift_banner.png)
  # A Quick Detour: Optionals
  
  ## Empty variables
@@ -152,4 +151,4 @@ let petName = optionalString ?? "Fido"
  When you're done, click Next to move on.
  
 */
-//: [Next](@next)
+//: [Previous](@pr

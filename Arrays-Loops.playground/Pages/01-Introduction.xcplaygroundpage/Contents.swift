@@ -1,5 +1,5 @@
 /*:
- 
+ ![Make School Banner](./swift_banner.png)
  # An Introduction to Arrays
 
  Arrays are your first foray into dealing with _collections_ of data. So far, you know how to store single values into variables and constants, using `let` and `var`. But what if you wanted to store lots of data, without declaring a variable or constant for each piece?

@@ -1,6 +1,5 @@
-//: [Previous](@previous)
 /*:
-
+ ![Make School Banner](./swift_banner.png)
  # Setting up the palette
  
  ## Back to arrays
@@ -49,7 +48,7 @@ var palette: [Character?] = []
 
 
 
-//: [Next](@next)
+//: [Previous](@previous) | [Next](@next)
 
 
 
@@ -99,4 +98,4 @@ scene.setup(simulation: EmptySimulation(), palette: palette)
 scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
 scene.setup(solutionSim: EmptySimulation(), solutionPalette: solutionArray())
-XCPlaygroundPage.currentPage.liveView = sceneView
+XCPlaygroundPage.currentPa

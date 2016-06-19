@@ -1,7 +1,6 @@
 class MySimulation: NeighborsSimulation {
-//: [Previous](@previous)
 /*:
- 
+ ![Make School Banner](./swift_banner.png)
  # Counting Neighbor Cells
 
  Now that we know how to instantiate a 2D grid, it's time to start implementing the logic of Game of Life. Here, we've provided you with a prefilled grid with a `Glider` pattern. Our first task is to count correctly how many neighbors each cell has!
@@ -67,7 +66,7 @@ class MySimulation: NeighborsSimulation {
     
     
     
-//: [Next](@next)
+//: [Previous](@previous) | [Next](@next)
 
 
 
@@ -104,4 +103,4 @@ scene.setup(neighborsSim: MySimulation(file: path)!, palette: defaultPalette())
 scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
 scene.checkNeighbors()
-XCPlaygroundPage.currentPage.liveView = sceneView
+XCPlaygroundPage.currentPa

@@ -1,6 +1,5 @@
-//: [Previous](@previous)
 /*:
- 
+ ![Make School Banner](./swift_banner.png)
  # Two dimensional Arrays
 
  You might have noticed we haven't shown you how build a 2D grid of cells. We'll need one for Game of Life so let's get started!
@@ -57,7 +56,7 @@ var grid: [[Character?]] = []
 
 //: - important: Remember that `Array`s are zero-indexed in Swift. `[0]` represents the first value!
 //:
-//: [Next](@next)
+//: [Previous](@previous) | [Next](@next)
 
 
 
@@ -101,4 +100,4 @@ sim.grid = grid
 scene.setup(simulation: sim, palette: palette)
 scene.scaleMode = .AspectFill
 sceneView.presentScene(scene)
-XCPlaygroundPage.currentPage.liveView = sceneView
+XCPlaygroundPage.currentPa
