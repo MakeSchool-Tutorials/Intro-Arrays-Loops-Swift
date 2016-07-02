@@ -41,6 +41,8 @@ var grid: [[Character?]] = []
 
  - experiment: Use this syntax to make yourself a nice pattern of `Character`s on your new 8x10, two dimensional grid!
 
+ - important: grid[0][0] represents the bottom-left corner.
+
 */
 
 
