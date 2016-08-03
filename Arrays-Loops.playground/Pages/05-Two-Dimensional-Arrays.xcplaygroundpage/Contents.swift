@@ -27,8 +27,10 @@ var grid: [[Character?]] = []
 
 */
 
-
-
+for index in 0..<8 {
+    let column = [Character?](count: 10, repeatedValue: nil)
+    grid.append(column)
+}
 
 
 /*:
@@ -45,16 +47,24 @@ var grid: [[Character?]] = []
 
 */
 
+// Self exploratory activity, but this makes a nice :) pattern
+grid[1][6] = "🐱"
+grid[1][7] = "🐱"
+grid[2][6] = "🐱"
+grid[2][7] = "🐱"
 
+grid[5][6] = "🐱"
+grid[5][7] = "🐱"
+grid[6][6] = "🐱"
+grid[6][7] = "🐱"
 
+for index in 1..<7 {
+    grid[index][1] = "😺"
+    grid[index][2] = "😺"
+}
 
-
-
-
-
-
-
-
+grid[0][3] = "😺"
+grid[7][3] = "😺"
 
 //: - important: Remember that `Array`s are zero-indexed in Swift. `[0]` represents the first value!
 //:
