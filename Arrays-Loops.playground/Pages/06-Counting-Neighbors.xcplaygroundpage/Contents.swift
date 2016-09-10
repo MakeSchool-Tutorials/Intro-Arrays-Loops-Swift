@@ -44,7 +44,7 @@ class MySimulation: NeighborsSimulation {
 
  To call `getAlive`, you can use a syntax like this:
 
-    let alive = getAlive(grid, column: x - 1, row: y)
+    let alive = getAlive(grid: grid, column: x - 1, row: y)
 
  - note: We discussed this breifly in the Functions Playground. `getAlive` was declared with custom parameter labels of `column` and `row` for the `x` & `y` values!
 

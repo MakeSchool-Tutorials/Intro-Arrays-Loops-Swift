@@ -28,7 +28,7 @@ class MySimulation: NeighborsSolutionSimulation {
  This is the `update` function that will get called on each step of the simulation. Here, you're responsible for accessing `grid`, and updating its values.
 
  - Iterate through each row and column using bounds `grid.count` and `grid[0].count`
- - Get the neighbor count for each, using `countNeighbors(grid, column: x, row: y)`
+ - Get the neighbor count for each, using `countNeighbors(grid: grid, column: x, row: y)`
  - Use `if` statements to check if cells are alive and count the living neighbors
  - Set the cell to its new state using the rules above!
 
