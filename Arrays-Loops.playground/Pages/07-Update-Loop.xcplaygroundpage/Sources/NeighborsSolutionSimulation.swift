@@ -1,8 +1,8 @@
 import Foundation
 
-public class NeighborsSolutionSimulation: Simulation {
+open class NeighborsSolutionSimulation: Simulation {
     
-    public func countNeighbors(map: [[Character?]], column x: Int, row y: Int) -> Int {
+    open func countNeighbors(grid map: [[Character?]], column x: Int, row y: Int) -> Int {
         var count = 0
         count += isCellAlive(map, x-1, y)
         count += isCellAlive(map, x+1, y)
@@ -15,7 +15,7 @@ public class NeighborsSolutionSimulation: Simulation {
         return count
     }
     
-    func isCellAlive(map: [[Character?]], _ i: Int, _ j: Int) -> Int {
+    func isCellAlive(_ map: [[Character?]], _ i: Int, _ j: Int) -> Int {
         if i < 0 || map.count <= i {
             return 0
         }

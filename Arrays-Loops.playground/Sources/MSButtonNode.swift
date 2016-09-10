@@ -9,32 +9,32 @@
 import SpriteKit
 
 public enum MSButtonNodeState {
-    case Active, Selected, Hidden
+    case active, selected, hidden
 }
 
-public class MSButtonNode: SKSpriteNode {
+open class MSButtonNode: SKSpriteNode {
     
     /* Setup a dummy action closure */
     var selectedHandler: () -> Void = { print("No button action set") }
     
     /* Button state management */
-    public var state: MSButtonNodeState = .Active {
+    open var state: MSButtonNodeState = .active {
         didSet {
             switch state {
-            case .Active:
+            case .active:
                 /* Enable touch */
-                self.userInteractionEnabled = true
+                self.isUserInteractionEnabled = true
                 
                 /* Visible */
                 self.alpha = 1
                 break
-            case .Selected:
+            case .selected:
                 /* Semi transparent */
                 self.alpha = 0.7
                 break
-            case .Hidden:
+            case .hidden:
                 /* Disable touch */
-                self.userInteractionEnabled = false
+                self.isUserInteractionEnabled = false
                 
                 /* Hide */
                 self.alpha = 0
@@ -50,17 +50,17 @@ public class MSButtonNode: SKSpriteNode {
         super.init(coder: aDecoder)
         
         /* Enable touch on button node */
-        self.userInteractionEnabled = true
+        self.isUserInteractionEnabled = true
     }
     
     // MARK: - Mouse handling
-    override public func mouseDown(theEvent: NSEvent) {
-        state = .Selected
+    override open func mouseDown(with theEvent: NSEvent) {
+        state = .selected
     }
     
-    override public func mouseUp(theEvent: NSEvent) {
+    override open func mouseUp(with theEvent: NSEvent) {
         selectedHandler()
-        state = .Active
+        state = .active
     }
     
 }

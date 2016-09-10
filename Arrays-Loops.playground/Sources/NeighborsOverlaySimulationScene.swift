@@ -8,14 +8,14 @@
 
 import SpriteKit
 
-public class NeighborsOverlaySimulationScene: SimulationScene {
+open class NeighborsOverlaySimulationScene: SimulationScene {
     
     var neighborsSim: NeighborsSimulation = NeighborsSimulation()
     
-    let correctColor = SKColor.greenColor()
-    let incorrectColor = SKColor.redColor()
+    let correctColor = SKColor.green
+    let incorrectColor = SKColor.red
     
-    public func setup(neighborsSim neighborsSim: NeighborsSimulation, palette: [Character?]) {
+    open func setup(neighborsSim: NeighborsSimulation, palette: [Character?]) {
         super.setup(simulation: neighborsSim, palette: palette)
         
         self.neighborsSim = neighborsSim
@@ -26,18 +26,18 @@ public class NeighborsOverlaySimulationScene: SimulationScene {
         checkNeighbors()
     }
     
-    public func checkNeighbors() {
+    open func checkNeighbors() {
         for i in 0..<sim.grid.count {
             for j in 0..<sim.grid[i].count {
                 let solutionCount = countNeighbors(sim.grid, column: i, row: j)
-                let count = neighborsSim.countNeighbors(sim.grid, column: i, row: j)
+                let count = neighborsSim.countNeighbors(grid: sim.grid, column: i, row: j)
                 let color = solutionCount == count ? correctColor : incorrectColor
                 grid.setOverlayText(i, j, text: String(count), color: color)
             }
         }
     }
     
-    func countNeighbors(map: [[Character?]], column i: Int, row j: Int) -> Int {
+    func countNeighbors(_ map: [[Character?]], column i: Int, row j: Int) -> Int {
         var count = 0
         count += isCellAlive(map, column: i-1, row: j)
         count += isCellAlive(map, column: i+1, row: j)
@@ -50,7 +50,7 @@ public class NeighborsOverlaySimulationScene: SimulationScene {
         return count
     }
     
-    func isCellAlive(map: [[Character?]], column i: Int, row j: Int) -> Int {
+    func isCellAlive(_ map: [[Character?]], column i: Int, row j: Int) -> Int {
         if i < 0 || map.count <= i {
             return 0
         }

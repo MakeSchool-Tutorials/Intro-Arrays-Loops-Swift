@@ -12,48 +12,48 @@ public func defaultPalette() -> [Character?] {
     return ["👾", "🐱", nil, nil, nil, nil, nil, nil]
 }
 
-public func paletteFilledWith(char: Character?, size: Int) -> [Character?] {
-    return [Character?].init(count: size, repeatedValue: char)
+public func paletteFilledWith(_ char: Character?, size: Int) -> [Character?] {
+    return [Character?].init(repeating: char, count: size)
 }
 
-public class SimulationScene: SKScene {
+open class SimulationScene: SKScene {
     
     internal var sim: Simulation!
     internal var palette: [Character?]!
     
     var grid: TouchableGrid!
     var paletteGrid: PaletteGrid!
-    public var playButton: MSPlayPauseToggleButtonNode!
-    public var stepButton: MSButtonNode!
+    open var playButton: MSPlayPauseToggleButtonNode!
+    open var stepButton: MSButtonNode!
     var generationLabel: SKLabelNode!
     
-    var timer: NSTimer? = nil
+    var timer: Timer? = nil
     
     var liveChar: Character?
     
     var generation = 1
     
-    public func setup(simulation sim: Simulation, palette: [Character?]) {
+    open func setup(simulation sim: Simulation, palette: [Character?]) {
         self.sim = sim
         sim.setup()
         self.palette = palette
     }
     
-    public override func didMoveToView(view: SKView) {
-        playButton = childNodeWithName("playButton") as! MSPlayPauseToggleButtonNode
-        stepButton = childNodeWithName("stepButton") as! MSButtonNode
+    open override func didMove(to view: SKView) {
+        playButton = childNode(withName: "playButton") as! MSPlayPauseToggleButtonNode
+        stepButton = childNode(withName: "stepButton") as! MSButtonNode
         playButton.selectedHandler = playPausePressed
         stepButton.selectedHandler = stepButtonPressed
         
-        playButton.state = .Hidden
-        stepButton.state = .Hidden
+        playButton.state = .hidden
+        stepButton.state = .hidden
                 
-        generationLabel = childNodeWithName("generationLabel") as! SKLabelNode
-        grid = childNodeWithName("grid") as! TouchableGrid
+        generationLabel = childNode(withName: "generationLabel") as! SKLabelNode
+        grid = childNode(withName: "grid") as! TouchableGrid
         grid.setup(sim.grid)
         grid.touchCallback = gridCellTouched
         
-        paletteGrid = childNodeWithName("palette") as! PaletteGrid
+        paletteGrid = childNode(withName: "palette") as! PaletteGrid
         paletteGrid.setup(palette)
         paletteGrid.touchCallback = paletteCellTouched
         
@@ -65,7 +65,7 @@ public class SimulationScene: SKScene {
         }
     }
     
-    func gridCellTouched(x: Int, y: Int) {
+    func gridCellTouched(_ x: Int, y: Int) {
         if sim.grid[x][y] != liveChar {
             sim.grid[x][y] = liveChar
         } else {
@@ -74,7 +74,7 @@ public class SimulationScene: SKScene {
         update()
     }
     
-    func paletteCellTouched(x: Int, _: Int) {
+    func paletteCellTouched(_ x: Int, _: Int) {
         paletteGrid.highlightCell(x)
         liveChar = palette[x]
     }
@@ -88,15 +88,15 @@ public class SimulationScene: SKScene {
     
     func playPausePressed() {
         if playButton.toggled {
-            timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(SimulationScene.timerUpdate), userInfo: nil, repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(SimulationScene.timerUpdate), userInfo: nil, repeats: true)
             timer?.fire()
         } else {
             timer?.invalidate()
         }
     }
     
-    public func toggleButton() {
-        playButton.mouseUp(NSEvent())
+    open func toggleButton() {
+        playButton.mouseUp(with: NSEvent())
     }
     
     func stepButtonPressed() {

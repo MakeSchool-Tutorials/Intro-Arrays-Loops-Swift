@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class GOLSolutionSimulation: Simulation {
+open class GOLSolutionSimulation: Simulation {
     
-    public var liveChar: Character = "👾"
+    open var liveChar: Character = "👾"
     
-    public override func setup() {
+    open override func setup() {
     }
     
-    public override func update() {
+    open override func update() {
         var newGrid = grid // swift copies arrays by value
         for i in 0..<grid.count {
             for j in 0..<grid[i].count {
@@ -39,7 +39,7 @@ public class GOLSolutionSimulation: Simulation {
         grid = newGrid
     }
     
-    func countNeighbors(grid: [[Character?]], i: Int, j: Int) -> Int {
+    func countNeighbors(_ grid: [[Character?]], i: Int, j: Int) -> Int {
         var count = 0
         count += isCellAlive(grid, i-1, j)
         count += isCellAlive(grid, i+1, j)
@@ -52,7 +52,7 @@ public class GOLSolutionSimulation: Simulation {
         return count
     }
     
-    func isCellAlive(grid: [[Character?]], _ i: Int, _ j: Int) -> Int {
+    func isCellAlive(_ grid: [[Character?]], _ i: Int, _ j: Int) -> Int {
         if i < 0 || grid.count <= i {
             return 0
         }

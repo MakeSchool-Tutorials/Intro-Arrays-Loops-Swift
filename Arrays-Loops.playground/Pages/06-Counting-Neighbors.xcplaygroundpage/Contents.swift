@@ -93,12 +93,12 @@ Don't worry about this code. It handles the display.
 import XCPlayground
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
-let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+let sceneView = SKView(frame: CGRect(origin: CGPoint.zero, size: size))
 sceneView.wantsLayer = true
 let scene = NeighborsOverlaySimulationScene(fileNamed: "SimulationScene")!
-let path = NSBundle.mainBundle().pathForResource("map01", ofType: "txt")!
+let path = Bundle.main.path(forResource: "map01", ofType: "txt")!
 scene.setup(neighborsSim: MySimulation(file: path)!, palette: defaultPalette())
-scene.scaleMode = .AspectFill
+scene.scaleMode = .aspectFill
 sceneView.presentScene(scene)
 scene.checkNeighbors()
 XCPlaygroundPage.currentPage.liveView = sceneView

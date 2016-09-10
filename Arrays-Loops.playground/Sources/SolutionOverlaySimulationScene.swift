@@ -8,13 +8,13 @@
 
 import SpriteKit
 
-public class SolutionOverlaySimulationScene: SimulationScene {
+open class SolutionOverlaySimulationScene: SimulationScene {
     
-    public var solutionSim: Simulation = Simulation()
+    open var solutionSim: Simulation = Simulation()
 
-    public var solutionPalette = [Character?]()
+    open var solutionPalette = [Character?]()
     
-    public func setup(solutionSim solutionSim: Simulation, solutionPalette: [Character?]) {
+    open func setup(solutionSim: Simulation, solutionPalette: [Character?]) {
         self.solutionSim = solutionSim
         self.solutionPalette = solutionPalette
         checkPalette()
@@ -32,9 +32,9 @@ public class SolutionOverlaySimulationScene: SimulationScene {
         let maxLen = min(solutionPalette.count, palette.count)
         for x in 0..<maxLen {
             if solutionPalette[x] != palette[x] {
-                paletteGrid.setTileState(x, 0, state: .Incorrect)
+                paletteGrid.setTileState(x, 0, state: .incorrect)
             } else {
-                paletteGrid.setTileState(x, 0, state: .Default)
+                paletteGrid.setTileState(x, 0, state: .default)
             }
         }
         if solutionPalette.count != palette.count {
@@ -46,9 +46,9 @@ public class SolutionOverlaySimulationScene: SimulationScene {
         for x in 0..<sim.grid.count {
             for y in 0..<sim.grid[x].count {
                 if solutionSim.grid[x][y] != sim.grid[x][y] {
-                    grid.setTileState(x, y, state: .Incorrect)
+                    grid.setTileState(x, y, state: .incorrect)
                 } else {
-                    grid.setTileState(x, y, state: .Default)
+                    grid.setTileState(x, y, state: .default)
                 }
             }
         }

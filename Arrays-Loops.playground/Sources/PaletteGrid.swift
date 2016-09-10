@@ -8,14 +8,14 @@
 
 import SpriteKit
 
-public class PaletteGrid: TouchableGrid {
+open class PaletteGrid: TouchableGrid {
     
     var highlighted: Int? = nil
     
-    public var tileHighlightedLineWidth: CGFloat = 2.0
-    public var tileHighlightedLineColor = SKColor.whiteColor()
+    open var tileHighlightedLineWidth: CGFloat = 2.0
+    open var tileHighlightedLineColor = SKColor.white
     
-    public func setup(paletteArray: [Character?]) {
+    open func setup(_ paletteArray: [Character?]) {
         let map = PaletteGrid.arrayToMap(paletteArray)
         super.setup(map)
     }
@@ -24,11 +24,11 @@ public class PaletteGrid: TouchableGrid {
         super.init(coder: aDecoder)
     }
     
-    public func updateAll(palette: [Character?]) {
+    open func updateAll(_ palette: [Character?]) {
         updateAll(PaletteGrid.arrayToMap(palette))
     }
     
-    public func highlightCell(x: Int) {
+    open func highlightCell(_ x: Int) {
         if x != highlighted {
             if let highlighted = highlighted {
                 let cell = self.shapeMap[highlighted][0]
@@ -44,7 +44,7 @@ public class PaletteGrid: TouchableGrid {
         }
     }
     
-    public static func arrayToMap(palette: [Character?]) -> [[Character?]] {
+    open static func arrayToMap(_ palette: [Character?]) -> [[Character?]] {
         var map: [[Character?]] = []
         for char in palette {
             map.append([char])

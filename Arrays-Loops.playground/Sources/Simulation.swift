@@ -8,14 +8,14 @@
 
 import Foundation
 
-public func simFilledWith(char: Character?, columns: Int, rows: Int) -> Simulation {
+public func simFilledWith(_ char: Character?, columns: Int, rows: Int) -> Simulation {
     let sim = Simulation()
-    sim.grid = [[Character?]].init(count: columns, repeatedValue: [Character?].init(count: rows, repeatedValue: char))
+    sim.grid = [[Character?]].init(repeating: [Character?].init(repeating: char, count: rows), count: columns)
     return sim
 }
 
-public class Simulation {
-    public var grid: [[Character?]]
+open class Simulation {
+    open var grid: [[Character?]]
     
     public init() {
         grid = []
@@ -34,7 +34,7 @@ public class Simulation {
         }
     }
     
-    private func readFromFile(file: String) -> [[Character?]]? {
+    fileprivate func readFromFile(_ file: String) -> [[Character?]]? {
         let nullChar: Character = "0"
         let reader = StreamReader(path: file)
         if let reader = reader {
@@ -43,7 +43,7 @@ public class Simulation {
             while let line = reader.nextLine() {
                 if grid.count == 0 {
                     rowLength = line.characters.count
-                    grid = [[Character?]].init(count: rowLength, repeatedValue: [])
+                    grid = [[Character?]].init(repeating: [], count: rowLength)
                 }
                 if line.characters.count != rowLength {
                     // something is wrong
@@ -51,7 +51,7 @@ public class Simulation {
                     return nil
                 }
                 for i in 0..<rowLength {
-                    let char = line[line.startIndex.advancedBy(i)]
+                    let char = line[line.characters.index(line.startIndex, offsetBy: i)]
                     if char == nullChar {
                         grid[i].append(nil)
                     } else {
@@ -65,9 +65,9 @@ public class Simulation {
         }
     }
 
-    public func setup() {
+    open func setup() {
     }
     
-    public func update() {
+    open func update() {
     }
 }

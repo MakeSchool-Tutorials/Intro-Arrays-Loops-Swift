@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-public class MSPlayPauseToggleButtonNode: MSButtonNode {
+open class MSPlayPauseToggleButtonNode: MSButtonNode {
     
     internal var toggled: Bool = false {
         didSet {
@@ -31,14 +31,14 @@ public class MSPlayPauseToggleButtonNode: MSButtonNode {
         label.fontName = "Menlo Bold"
         label.fontSize = 32
         label.fontColor = SKColor(red: 0, green: 43.0/255, blue: 62.0/255, alpha: 1.0)
-        label.verticalAlignmentMode = .Center
-        label.horizontalAlignmentMode = .Center
+        label.verticalAlignmentMode = .center
+        label.horizontalAlignmentMode = .center
         self.addChild(label)
     }
     
-    override public func mouseUp(theEvent: NSEvent) {
+    override open func mouseUp(with theEvent: NSEvent) {
         toggled = !toggled
-        super.mouseUp(theEvent)
+        super.mouseUp(with: theEvent)
     }
     
 }

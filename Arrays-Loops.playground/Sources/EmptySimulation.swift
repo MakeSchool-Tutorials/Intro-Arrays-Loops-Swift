@@ -1,5 +1,5 @@
 import Foundation
 
-public class EmptySimulation: Simulation {
+open class EmptySimulation: Simulation {
     
 }

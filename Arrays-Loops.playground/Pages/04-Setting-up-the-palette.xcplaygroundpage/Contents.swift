@@ -91,11 +91,11 @@ var palette: [Character?] = []
 import XCPlayground
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
-let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+let sceneView = SKView(frame: CGRect(origin: CGPoint.zero, size: size))
 sceneView.wantsLayer = true
 let scene = SolutionOverlaySimulationScene(fileNamed: "SimulationScene")!
 scene.setup(simulation: EmptySimulation(), palette: palette)
-scene.scaleMode = .AspectFill
+scene.scaleMode = .aspectFill
 sceneView.presentScene(scene)
 scene.setup(solutionSim: EmptySimulation(), solutionPalette: solutionArray())
 XCPlaygroundPage.currentPage.liveView = sceneView

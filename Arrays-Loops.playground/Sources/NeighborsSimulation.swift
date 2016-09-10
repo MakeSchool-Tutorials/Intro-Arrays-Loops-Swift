@@ -8,8 +8,8 @@
 
 import Foundation
 
-public class NeighborsSimulation: Simulation {
-    public func countNeighbors(grid: [[Character?]], column x: Int, row y: Int) -> Int {
+open class NeighborsSimulation: Simulation {
+    open func countNeighbors(grid: [[Character?]], column x: Int, row y: Int) -> Int {
         return 0
     }
 }
