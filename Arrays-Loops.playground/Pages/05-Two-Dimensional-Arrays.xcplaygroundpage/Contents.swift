@@ -16,13 +16,16 @@ var grid: [[Character?]] = []
 
  - callout(Try it out):
 
-        let column = [Character?](count: 10, repeatedValue: nil)
+        let column = [Character?](repeating: nil, count: 10)
         grid.append(column)
 
+ 
  - note: The initializer for column is a special _constructor_ syntax that lets you quickly set an array with a count of repeated values.
 
+ 
  We now have a column of empty cells!
 
+ 
  - callout(Challenge): Try utilizing some for-loop logic to append 8 of these empty columns to make a 8x10 grid.
 
 */
@@ -41,6 +44,7 @@ var grid: [[Character?]] = []
 
  - experiment: Use this syntax to make yourself a nice pattern of `Character`s on your new 8x10, two dimensional grid!
 
+ 
  - important: grid[0][0] represents the bottom-left corner.
 
 */

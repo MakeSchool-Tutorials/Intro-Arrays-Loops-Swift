@@ -131,6 +131,7 @@ exampleArray[4]
 
  - important: Did you spot the difference from last time we used `for-loops`? This time we have a counter variable called `index`. We are also starting at `0` and using `..<` instead of `...` -- `..<` means up to _but not_ including the final number while `...` means up to _and including_ the final number. You can read `0..<5` as _zero to five non-inclusive_. `0...5` reads as _zero to five inclusive_.
 
+ 
  - callout(Try it out): Remember `palette.count`? It told us how many elements there are in the array. Let's try replacing 5 with that, and use the _subscript assignment_ operator to set the element corresponding to that index with 👾.
 
  */

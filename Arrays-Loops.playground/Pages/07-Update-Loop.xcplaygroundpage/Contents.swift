@@ -32,8 +32,10 @@ class MySimulation: NeighborsSolutionSimulation {
  - Use `if` statements to check if cells are alive and count the living neighbors
  - Set the cell to its new state using the rules above!
 
+     
  - note: Every time you make a change, your code will automatically run. A red overlay on some cells means that that cell value is incorrect.
 
+     
  - callout(Plan your code): Think carefully about what you're doing when you set array elements as you iterate through them.
 
      - Is there a chance that some neighbors get counted using their "new" cell values instead of the old ones?
@@ -52,7 +54,7 @@ class MySimulation: NeighborsSolutionSimulation {
 
  ## Got it working?
 
- Congratulations! You've now completed this lengthy introduction to Arrays in Swift, _and_ you've created your very own implementation of Conway's Game of Life! In the next exercise we'll transfer your code into a full Xcode project so you can run it on your iPhone. Then we'll simulate s
+ Congratulations! You've now completed this lengthy introduction to Arrays in Swift, _and_ you've created your very own implementation of Conway's Game of Life!
 
 */
 

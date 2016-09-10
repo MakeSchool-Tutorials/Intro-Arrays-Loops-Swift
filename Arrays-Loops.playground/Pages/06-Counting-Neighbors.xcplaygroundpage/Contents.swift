@@ -19,6 +19,7 @@ class MySimulation: NeighborsSimulation {
      - Get the `Character?` (_character optional_) value from grid. Is it `nil`? If so, return 0.
      - If you haven't returned 0 yet, then return 1.
 
+     
  - callout(Hint): To get the number of columns in grid, you can use `grid.count`. To get the number of rows, you can get the size of the first column: `grid[0].count`
 
  Write your code inside the following function:
@@ -47,6 +48,7 @@ class MySimulation: NeighborsSimulation {
 
  - note: We discussed this breifly in the Functions Playground. `getAlive` was declared with custom parameter labels of `column` and `row` for the `x` & `y` values!
 
+     
  - callout(Hint): `alive` will then contain a 1 or 0 indicating status of the cell to the _left_ of the coordinate! Now all you have to do is call the function 8 times, in each of the directions (including diagonals) and add all of them up.
 
      If you get red numbers in the overlay, check your logic again (including `getAlive`) – look at which numbers are wrong to you pinpoint any bugs in your code. Grab a pen and some paper if you need to.
