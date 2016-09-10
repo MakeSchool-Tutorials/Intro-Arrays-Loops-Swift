@@ -88,7 +88,7 @@ var palette: [Character?] = []
 /*:
  Don't worry about this code. It handles the display.
  */
-import XCPlayground
+import PlaygroundSupport
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
 let sceneView = SKView(frame: CGRect(origin: CGPoint.zero, size: size))
@@ -98,4 +98,4 @@ scene.setup(simulation: EmptySimulation(), palette: palette)
 scene.scaleMode = .aspectFill
 sceneView.presentScene(scene)
 scene.setup(solutionSim: EmptySimulation(), solutionPalette: solutionArray())
-XCPlaygroundPage.currentPage.liveView = sceneView
+PlaygroundPage.current.liveView = sceneView

@@ -94,7 +94,7 @@ var grid: [[Character?]] = []
 /*:
 Don't worry about this code. It handles the display.
 */
-import XCPlayground
+import PlaygroundSupport
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
 let sceneView = SKView(frame: CGRect(origin: CGPoint.zero, size: size))
@@ -106,4 +106,4 @@ sim.grid = grid
 scene.setup(simulation: sim, palette: palette)
 scene.scaleMode = .aspectFill
 sceneView.presentScene(scene)
-XCPlaygroundPage.currentPage.liveView = sceneView
+PlaygroundPage.current.liveView = sceneView

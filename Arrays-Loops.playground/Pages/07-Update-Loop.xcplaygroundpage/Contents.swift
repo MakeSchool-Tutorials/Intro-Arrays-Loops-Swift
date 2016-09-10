@@ -92,7 +92,7 @@ class MySimulation: NeighborsSolutionSimulation {
 Don't worry about this code. It handles the display.
 */
 }
-import XCPlayground
+import PlaygroundSupport
 import SpriteKit
 let size = CGSize(width: 320, height: 568)
 let sceneView = SKView(frame: CGRect(origin: CGPoint.zero, size: size))
@@ -105,7 +105,7 @@ scene.setup(simulation: sim, palette: defaultPalette())
 scene.scaleMode = .aspectFill
 sceneView.presentScene(scene)
 scene.setup(solutionSim: comparisonSim, solutionPalette: defaultPalette())
-XCPlaygroundPage.currentPage.liveView = sceneView
+PlaygroundPage.current.liveView = sceneView
 let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 DispatchQueue.main.asyncAfter(deadline: delayTime) {
     scene.toggleButton()
