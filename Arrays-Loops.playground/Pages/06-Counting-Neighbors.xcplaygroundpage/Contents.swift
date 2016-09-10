@@ -27,11 +27,13 @@ class MySimulation: NeighborsSimulation {
 */
 
     func getAlive(grid: [[Character?]], column x: Int, row y: Int) -> Int {
-
-
-
-
-        return 1
+        if x < 0 || x >= grid.count || y < 0 || y >= grid[0].count {
+            return 0
+        } else if grid[x][y] == nil {
+            return 0
+        } else {
+            return 1
+        }
     }
 
 /*:
@@ -55,13 +57,17 @@ class MySimulation: NeighborsSimulation {
 
 */
 
-
     override func countNeighbors(grid: [[Character?]], column x: Int, row y: Int) -> Int {
-
-
-
-
-        return 1
+        var aliveCount = 0
+        aliveCount += getAlive(grid: grid, column: x - 1, row: y - 1)
+        aliveCount += getAlive(grid: grid, column: x - 1, row: y)
+        aliveCount += getAlive(grid: grid, column: x - 1, row: y + 1)
+        aliveCount += getAlive(grid: grid, column: x, row: y - 1)
+        aliveCount += getAlive(grid: grid, column: x, row: y + 1)
+        aliveCount += getAlive(grid: grid, column: x + 1, row: y - 1)
+        aliveCount += getAlive(grid: grid, column: x + 1, row: y)
+        aliveCount += getAlive(grid: grid, column: x + 1, row: y + 1)
+        return aliveCount
     }
 
 

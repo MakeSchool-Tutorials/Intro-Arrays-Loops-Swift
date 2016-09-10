@@ -82,7 +82,7 @@ var alwaysAString: String! = nil
  Notice that we initially assign `nil` to this implicitly unwrapped optional `String`. If we were to try to use it at this point, we would trigger a runtime error:
 
  */
-
+// Should be re-commented after testing for the error
 //let stringLength = alwaysAString.characters.count
 
 /*:
@@ -108,7 +108,7 @@ print(alwaysAString)
  In order to call methods on optionals, you must first give Swift something that is non-optional, either through an implicitly unwrapped optional or by force unwrapping the optional where the method is called. Directly accessing an optional causes a compile-time error. Uncomment the following line to see:
 
  */
-
+// Should be re-commented after testing for the error
 //let intDescription = maybeAnInt.description // Value of optional type 'Int?' not unwrapped!
 
 /*:

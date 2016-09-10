@@ -21,8 +21,14 @@ var palette: [Character?] = []
 
  */
 
-
-
+for index in 0..<8 {
+    if index < 5 {
+        palette.append("🐱")
+    } else {
+        palette.append(nil)
+    }
+}
+palette
 
 
 

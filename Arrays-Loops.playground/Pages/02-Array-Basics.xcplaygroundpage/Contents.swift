@@ -8,7 +8,7 @@
 
  */
 
-let palette: [Character] = []
+var palette: [Character] = ["🐱", "😀", "😜"]
 
 /*:
 
@@ -59,8 +59,8 @@ exampleArray[4]
 
 
  */
-
-
+// must change line 11 to var instead of let as indicated below
+palette[0] = "😜"
 
 /*:
 
@@ -74,7 +74,7 @@ exampleArray[4]
 
  */
 
-
+palette[0] = "😜"
 
 /*:
 
@@ -99,8 +99,9 @@ exampleArray[4]
 
  */
 
-
-
+palette.count
+palette.append("🐱")
+palette.count
 
 /*:
 
@@ -116,7 +117,9 @@ exampleArray[4]
 
  */
 
-
+for index in 0..<5 {
+    palette.append("😈")
+}
 
 /*:
 
@@ -136,9 +139,10 @@ exampleArray[4]
 
  */
 
-
-
-
+for index in 0..<palette.count {
+    palette[index] = "👾"
+}
+palette
 
 /*:
 
