@@ -104,10 +104,9 @@ let comparisonSim = GOLSolutionSimulation(other: sim)
 scene.setup(simulation: sim, palette: defaultPalette())
 scene.scaleMode = .aspectFill
 sceneView.presentScene(scene)
-scene.setup(solutionSim: comparisonSim, solutionPalette: defaultPalette())
+scene.setup(solutionSim: comparisonSim, solutionPalette: defaultPalette(), needsButtons: true)
 PlaygroundPage.current.liveView = sceneView
 let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
 DispatchQueue.main.asyncAfter(deadline: delayTime) {
     scene.toggleButton()
-    scene.playButton.state = .hidden
 }

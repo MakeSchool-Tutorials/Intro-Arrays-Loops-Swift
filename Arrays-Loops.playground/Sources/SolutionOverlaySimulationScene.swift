@@ -14,9 +14,13 @@ open class SolutionOverlaySimulationScene: SimulationScene {
 
     open var solutionPalette = [Character?]()
     
-    open func setup(solutionSim: Simulation, solutionPalette: [Character?]) {
+    open func setup(solutionSim: Simulation, solutionPalette: [Character?], needsButtons: Bool = false) {
         self.solutionSim = solutionSim
         self.solutionPalette = solutionPalette
+        if needsButtons {
+            playButton.state = .active
+            stepButton.state = .active
+        }
         checkPalette()
         checkGrid()
     }
