@@ -80,7 +80,7 @@ exampleArray[4]
 
  ## Appending
 
- What if you want to _insert_ an element, changing the size of an array? `palette[3] = "🐱"` won't work, since accessing an array bound it's bounds causes an error. This is where `append()` comes in!
+ What if you want to _insert_ an element, changing the size of an array? `palette[3] = "🐱"` won't work, since accessing an array beyond it's bounds causes an error. This is where `append()` comes in!
 
 
  - callout(Try it out): Try running this code.
