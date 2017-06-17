@@ -18,7 +18,7 @@
 
  ![](gol.png)
 
- Conway's Game of Life not quite a game. It's [_cellular automaton_](https://en.wikipedia.org/wiki/Cellular_automaton) –- one that depicts the life and death of of cells on a two-dimensional grid. Each cell can be turned either on or off. The cells multiply and die off according to the state of their neighbors, a lot like spreading bacteria or microorganisms.
+ Conway's Game of Life not quite a game. It's [_cellular automaton_](https://en.wikipedia.org/wiki/Cellular_automaton) –- one that depicts the life and death of cells on a two-dimensional grid. Each cell can be turned either on or off. The cells multiply and die off according to the state of their neighbors, a lot like spreading bacteria or microorganisms.
 
  The grid of cells starts out in a configuration of alive and dead cells. On each step or _generation_, the cells are updated according to the following rules:
 
