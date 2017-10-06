@@ -34,8 +34,8 @@ class MySimulation: NeighborsSolutionSimulation {
 
      
  - note: Every time you make a change, your code will automatically run. A red overlay on some cells means that that cell value is incorrect.
-
-     
+*/
+/*:
  - callout(Plan your code): Think carefully about what you're doing when you set array elements as you iterate through them.
 
      - Is there a chance that some neighbors get counted using their "new" cell values instead of the old ones?

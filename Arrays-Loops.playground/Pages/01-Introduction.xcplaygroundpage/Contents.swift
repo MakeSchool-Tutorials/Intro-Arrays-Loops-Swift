@@ -33,9 +33,11 @@
  While these rules seem pretty basic, they lead to some amazing emergent behaviors. Lo and behold, some of the phenomena found in Conway's Game of Life:
 
  - callout(Pulsar): ![](Game_of_life_pulsar.gif)
-
+ */
+/*:
  - callout(Glider): ![](Game_of_life_animated_glider.gif)
-
+ */
+/*:
  - callout(Glider Gun): ![](Gospers_glider_gun.gif)
 
  Click the Next button, and we'll be on our way to creating Conway's Game of Life!
