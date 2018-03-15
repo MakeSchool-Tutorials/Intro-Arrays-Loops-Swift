@@ -114,18 +114,19 @@ print(alwaysAString)
  The important takeaway here is that declaring a variable as implicitly unwrapped allows Swift to _automatically_ unwrap the value whenever it is used. This is the inverse of the usual situation: normally, we use the `!` to force-unwrap a value once we're sure it contains a value. With implicitly unwrapped optionals, we assert from the moment we declare the variable that it will _never_ be `nil` when we use it. That can save us a lot of typing (and visual clutter!) for variables that are accessed frequently. But it's important to be 100% sure that the variable is assigned before it's read the first time, because otherwise accessing it will result in crash.
 暗黙的アンラップを使うことで、Swiftは自動的に値をアンラップしてくれます。これは、本来のケースとは逆です。普通は、`!`を強制的アンラップに使います。暗黙的アンラップを使うことで、この値がアクセスする時は必ず`nil`以外になると命令しています。この方法を使うとたくさんのコードを書かなくてすむので、何度もアクセスする値に使うのに便利です。しかし、この値がアクセスされる前に必ず実際に値を含んでいることが100%保証されていなければなりません。
  
- ## オプショナル型を呼ぶメソッド
+ ## オプショナル型のメソッド
 
  In order to call methods on optionals, you must first give Swift something that is non-optional, either through an implicitly unwrapped optional or by force unwrapping the optional where the method is called. Directly accessing an optional causes a compile-time error. Uncomment the following line to see:
- 
+ オプショナル型のメソッドを呼び出すためには、オプショナル型でない形にして使う必要があります。つまり、呼び出す時に暗黙的アンラップもしくは強制的アンラップする必要があります。オプショナル型に直接アクセスしようとするとコンパイルタイムエラーが発生してしまうのです。下のコードをアンコメントしてみましょう。
 
  */
 
-//let intDescription = maybeAnInt.description // Value of optional type 'Int?' not unwrapped!
+//let intDescription = maybeAnInt.description
 
 /*:
 
  But we're programmers and we like working around the rules. You don't have to give Swift a non-optional if you use a technique called **optional chaining**. Chaining allows you to try to call a method on an optional. It will call the method if the optional has a value, and returns `nil` if it does not. Chaining is performed by placing a question mark between the variable name and the dot, parenthesis, or bracket that follows it:
+でも、プログラマーはルールを把握して、その中で上手くアクションを取っていくのが得意です。Optional Chaining（オプショナル・チェイニング）というテクニックを使うと、オプショナル型ではない形にする必要がなくなるのです。チェイニングはオプショナルのアクセスを可能にする仕組みです。この仕組みを使うと、オプショナルに値があれば、そのまま呼び出そうとするメソッドを呼び出し、nilであればメソッドを呼び出さず、`nil`を返します。チェイニングは変数名とドットの間、[]とドットの間等に`?`を加えることで可能です。下の例を見てみましょう。
 
  */
 
@@ -136,14 +137,18 @@ let firstElement = optionalArray?[0]
 /*:
 
  Placing a `?` after the name `optionalArray` will cause Swift to check whether the variable is `nil` before attempting to call `count` or access the array. The types of these expressions are optionals of the same type as the return type of method (so the call to `count`, which normally produces an `Int`, produces an `Int?` in this case). Phew! Still with us?
+`optionalArray`の後に`?`をつけることで、`count`メソッドを呼び出す前に`optionalArray`が`nil`かどうかを確認してくれます。この時、メソッドの返す値も、オプショナル型になります。（`count`メソッドを使う時、通常は `Int`を返すのですが、この場合は`Int?`を返すということです。）
 
- - experiment: Set `optionalArray` to `nil` and observe how the output values change.
+ - 実験: Set `optionalArray` to `nil` and observe how the output values change.`optionalArray`を`nil`にセットし直して、そのあとのコードがどう実行されるか見てみましょう。
 
  ## The Nil Coalescing Operator
 
  Sometimes we want to use a default value in the place of an optional when it turns out to be `nil`. For example, we might want to provide a placeholder name for an object when its own `name` property is `nil`, or use 0 if an integer is `nil`.
+ 時々、もし使おうとしている変数が`nil`だった時、`nil`の代わりに何かデフォルトの値を使いたい時があります。例えば、数字を表す変数が、`nil`だったら０を使う、といった場合です。
 
  Swift provides a way to do this very compactly: the nil-coalescing operator (`??`). When the optional to the left of the operator has a value, that value becomes the value of the expression. When the optional is `nil`, the value of the expression is the value on the right of the operator. Let's look at an example:
+ Swiftはこれを可能にするテクニックを持っています。Nil-coalescing operator と呼ばれ、`??`マークを使います。`??`の左側にある変数が値を持っていたら、その値を使い、もし`nil`だったら、`??`の右側の値を使います。
+ 例:
 
  */
 
@@ -153,14 +158,15 @@ let petName = optionalString ?? "Fido"
 /*:
 
  So if `optionalString` is not nil, we'll set `petName` to the value of `optionalString`. If it is nil, we'll set `petName` to "Fido".
-
- ## Recap
+`optionalString`が`nil`ではなかったら、`petName`は`optionalString`の値にセットされます。もし`optionalString`が`nil`だったら、`petName`は"Fido"にセットされます。
 
  We have looked at some of the capabilities of optionals in Swift. Optionals are a fundamental part of Swift that allow us to be very clear about when variables contain values and when they do not. All of the rules associated with optionals can be confusing at first, but you will quickly gain an intuition by putting your knowledge into practice. The compiler will try to help you along the way, reminding you when you make mistakes.
+ ここまでで、オプショナルの可能性について色々と見て実験して見ました。オプショナルはSwiftの基本的で重要な概念です。恐らく少し難しい部分があったと思いますが、色々な例を見たことで直感的にどういうものなのか感じ取れたでしょうか。
 
  - important: When working with optionals, try to prefer _optional binding_ (`if let`) and _optional chaining_ (`?`) instead of using _nil checks_ (`!= nil`) and _force unwrapping_ (`!`).
-
- When you're done, click Next to move on.
+ - 重要: オプショナルを使う時、_optional binding_(`if let`)や_optional chaining_(`?`)をできるだけ使うことを推奨します。（(`!= nil`)や_force unwrapping_ (`!`)はあまり使わない）
+ 
+Nextを押して次へ進みましょう。
 
 */
 //: [Previous](@previous) | [Next](@next)
