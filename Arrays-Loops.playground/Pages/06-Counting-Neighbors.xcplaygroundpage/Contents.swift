@@ -1,7 +1,7 @@
 class MySimulation: NeighborsSimulation {
 /*:
  ![Make School Banner](./swift_banner.png)
- # Counting Neighbor Cells
+ # Counting Neighbor Cells 周りのセルを数える
 
  Now that we know how to instantiate a 2D grid, it's time to start implementing the logic of Game of Life. Here, we've provided you with a prefilled grid with a `Glider` pattern. Our first task is to count correctly how many neighbors each cell has!
 
