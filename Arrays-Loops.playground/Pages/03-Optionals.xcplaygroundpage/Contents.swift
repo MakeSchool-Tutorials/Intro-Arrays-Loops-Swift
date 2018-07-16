@@ -54,7 +54,7 @@ if maybeAnInt != nil {
 
  ## Optional Binding
 
- もっと簡単な方法があります。**optional binding**という方法で、値が存在するかを確認して、そうであれば新しい変数を作りその変数に存在する値を定義します。下のコードは、`maybeAnInt`の値を（もし存在すれば）`definitelyAnInt`という新しい定数に結び合せ("bind")ています。
+ もっと簡単な方法があります。**optional binding**という方法で、値が存在するかを確認して、そうであれば新しい変数を作りその変数に存在する値を定義します。下のコードは、`definitelyAnInt`という新しい定数を、`maybeAnInt`の値（もし存在すれば）に束縛("bind")しています。
 
  */
 
@@ -127,7 +127,7 @@ let firstElement = optionalArray?[0]
 
  - 実験: `optionalArray`を`nil`にセットし直して、そのあとのコードがどう実行されるか見てみましょう。
 
- ## The Nil Coalescing Operator
+ ## Nil Coalescing Operator
 
  時々、もし使おうとしている変数が`nil`だった時、`nil`の代わりに何かデフォルトの値を使いたい時があります。例えば、数字を表す変数が、`nil`だったら０を使う、といった場合です。
 
@@ -144,7 +144,7 @@ let petName = optionalString ?? "Fido"
 
  ここまでで、オプショナルの可能性について色々と見て実験してみましたね。オプショナルはSwiftの基本的で重要な概念です。少し難しい部分があったかもしれませんが、色々な例を見たことで直感的にどういうものなのか感じ取れたでしょうか。
 
- - 重要: オプショナルを使う時、_optional binding_(`if let`)や_optional chaining_(`?`)をできるだけ使うことを推奨します。（(`!= nil`)や_force unwrapping_ (`!`)はあまり使わない）
+ - 重要: オプショナルを使う時、_optional binding_(`if let`)や_optional chaining_(`?`)をできるだけ使うことを推奨します。`!= nil`や_force unwrapping_ (`!`)はあまり使わない）
  
 "Next"を押して次へ進みましょう。
 
